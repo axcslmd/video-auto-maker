@@ -25,7 +25,7 @@ jobs:
           python-version: "3.11"
           cache: pip
       - name: Install Python dependencies
-        run: python -m pip install --disable-pip-version-check -r requirements.lock.txt pytest
+        run: python -m pip install --disable-pip-version-check -r requirements.lock.txt pytest jsonschema
       - name: Compile Python sources
         run: python -m compileall -q scripts
       - name: Validate license policy
