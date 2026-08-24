@@ -1,0 +1,138 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "storyboard-plan.schema.json",
+  "title": "Storyboard plan execution contract",
+  "type": "object",
+  "required": ["storyboard_role", "storyboard_aspect_ratio", "output_ratio", "shots"],
+  "properties": {
+    "contract_strictness": {"enum": ["draft", "production"]},
+    "client": {"type": "string", "pattern": "^[a-z0-9][a-z0-9_-]*$", "maxLength": 48},
+    "run_id": {"type": "string", "minLength": 1, "maxLength": 64},
+    "package": {"enum": ["oral-broadcast", "explainer", "brand-tvc"]},
+    "storyboard_role": {"enum": ["design_board", "video_storyboard"]},
+    "storyboard_aspect_ratio": {"const": "16:9"},
+    "output_ratio": {"enum": ["16:9", "9:16", "1:1", "4:3", "3:4"]},
+    "compiler": {
+      "type": "object",
+      "required": ["name", "version", "source_hashes"],
+      "properties": {
+        "name": {"type": "string", "minLength": 1},
+        "version": {"type": "string", "minLength": 1},
+        "source_hashes": {"type": "object"}
+      }
+    },
+    "facts_contract": {
+      "type": "object",
+      "required": ["fact_ids", "used_fact_ids", "forbidden_inferences"],
+      "properties": {
+        "fact_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^[a-z][a-z0-9_.-]*$"}},
+        "used_fact_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^[a-z][a-z0-9_.-]*$"}},
+        "forbidden_inferences": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "storyboard_contract": {
+      "type": "object",
+      "required": ["kind", "purpose", "composition_owner", "video_model_usage"],
+      "properties": {
+        "kind": {"enum": ["design_board", "video_storyboard"]},
+        "purpose": {"type": "string", "minLength": 1},
+        "composition_owner": {"enum": ["remotion", "storyboard"]},
+        "video_model_usage": {"enum": ["do_not_submit_as_storyboard_ref", "submit_per_shot"]},
+        "content_owner": {"type": "string", "minLength": 1},
+        "motion_owner": {"type": "string", "minLength": 1},
+        "assembly_owner": {"type": "string", "minLength": 1}
+      }
+    },
+    "characters": {"type": "array", "items": {"type": "object"}},
+    "shots": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 12,
+      "items": {
+        "type": "object",
+        "required": ["id", "panel_index", "ref_tags", "shot_size", "camera_movement", "composition", "lighting", "character_action", "micro_expression", "scene_prompt", "prop_prompts", "audio", "narrative_function", "felt_intent", "director_voice", "arc_position"],
+        "properties": {
+          "id": {"type": ["string", "integer"]},
+          "panel_index": {"type": "integer", "minimum": 1},
+          "duration": {"type": "number", "minimum": 0.1, "maximum": 60},
+          "scene_id": {"type": "string", "minLength": 1},
+          "ref_tags": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^@[a-z][a-z0-9_]*$"}},
+          "references": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["url", "tag"],
+              "properties": {
+                "id": {"type": "string"},
+                "url": {"type": "string", "minLength": 1},
+                "tag": {"type": "string", "pattern": "^@[a-z][a-z0-9_]*$"},
+                "type": {"type": "string", "minLength": 1},
+                "scope": {"type": "string", "minLength": 1}
+              }
+            }
+          },
+          "characters": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+          "shot_size": {"type": "string", "minLength": 1},
+          "camera_movement": {"type": "string", "minLength": 1},
+          "angle_offset": {"type": "number", "minimum": -180, "maximum": 180},
+          "composition": {"type": "string", "minLength": 1},
+          "lighting": {"type": "string", "minLength": 1},
+          "character_action": {"type": "string", "minLength": 1},
+          "micro_expression": {"type": "string", "minLength": 1},
+          "scene_prompt": {"type": "string", "minLength": 1},
+          "prop_prompts": {"type": "array", "items": {"type": ["string", "object"]}},
+          "audio": {
+            "type": "object",
+            "properties": {
+              "voice": {"type": "string"},
+              "bgm": {"type": "string"},
+              "sfx": {"type": "string"}
+            }
+          },
+          "narrative_function": {"type": "string", "minLength": 1},
+          "felt_intent": {"type": "string", "minLength": 1},
+          "director_voice": {"type": "string", "minLength": 1},
+          "arc_position": {"enum": ["opening", "development", "resolution"]},
+          "motion_elements": {"type": "array", "items": {"type": "string", "minLength": 1}},
+          "fact_refs": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^[a-z][a-z0-9_.-]*$"}},
+          "panel_plan": {"type": "array", "minItems": 1, "maxItems": 12, "items": {"type": ["string", "object"]}},
+          "motion_plan": {"type": "object"},
+          "asset_slots": {"type": "array"}
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {"required": ["storyboard_role"], "properties": {"storyboard_role": {"const": "design_board"}}},
+      "then": {
+        "properties": {
+          "storyboard_contract": {"properties": {"video_model_usage": {"const": "do_not_submit_as_storyboard_ref"}}},
+          "shots": {
+            "items": {
+              "required": ["motion_plan", "asset_slots"],
+              "properties": {
+                "motion_plan": {"type": "object", "required": ["schema_version", "motion_elements", "asset_slots"]},
+                "asset_slots": {"type": "array", "minItems": 1}
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {"required": ["contract_strictness"], "properties": {"contract_strictness": {"const": "production"}}},
+      "then": {
+        "required": ["client", "run_id", "package", "compiler", "facts_contract", "storyboard_contract"],
+        "properties": {
+          "shots": {
+            "items": {
+              "required": ["duration", "scene_id", "angle_offset", "references", "characters", "motion_elements", "fact_refs", "panel_plan"],
+              "properties": {"audio": {"required": ["voice", "bgm", "sfx"]}}
+            }
+          }
+        }
+      }
+    }
+  ]
+}

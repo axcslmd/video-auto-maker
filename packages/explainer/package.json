@@ -1,0 +1,57 @@
+{
+  "id": "explainer",
+  "display_name": "讲解包",
+  "sales_name": "数字人内容讲解模块",
+  "version": "1.0",
+  "primary_entry": "/explainer-video",
+  "included_commands": [
+    "/explainer-video"
+  ],
+  "shared_commands": [
+    "/video-auto-maker",
+    "/setup",
+    "/asset-prep",
+    "/brand-kit",
+    "/digital-human",
+    "/text-anim"
+  ],
+  "included_capabilities": [
+    "PPT/PDF/Word/课程/方案内容提炼",
+    "source_outline、director_plan、content_spec、human_segments 四件套",
+    "内容动效 + 数字人讲师双分支制作",
+    "PPT 原页/截图保真模式",
+    "分镜级视觉版式：host_full_bleed_text、split_left_right、stacked_top_bottom、corner_pip、cutout_presenter、content_full_bleed",
+    "video_use_bridge 融合计划与 edit memory",
+    "Remotion/HyperFrames 内容页动画和本地零模型融合"
+  ],
+  "excluded_capabilities": [
+    "单纯带货口播作为主交付",
+    "品牌 TVC 级情绪大片、隐喻创意和 logo 定格广告",
+    "长期课程体系搭建或教学平台交付",
+    "本地抠像/本地模型融合"
+  ],
+  "deliverables": [
+    "source_outline.json",
+    "director_plan.json",
+    "content_spec.json 或 content_shotlist.json",
+    "human_segments.json",
+    "layout_preview/explainer_layout_preview.html、.svg、.json",
+    "edit/fusion_plan.json、edl.json、takes_packed.md、project.md",
+    "数字人讲师视频分支",
+    "内容动画视频分支",
+    "融合讲解成片",
+    "QC 与交付记录"
+  ],
+  "handoff_rules": [
+    {
+      "condition": "客户只要主持人对镜介绍，不需要内容页或文档重导演",
+      "target_package": "oral-broadcast",
+      "message": "这可以降级为口播包，交付更快、成本更轻。"
+    },
+    {
+      "condition": "客户要品牌形象片、节点大片、新品发布主视觉广告",
+      "target_package": "brand-tvc",
+      "message": "这属于 TVC 包，创意和镜头规格需要按广告片报价。"
+    }
+  ]
+}

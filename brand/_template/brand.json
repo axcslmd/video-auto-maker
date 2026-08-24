@@ -1,0 +1,10 @@
+{
+  "client": "_template",
+  "brand_name": "请填写品牌名",
+  "primary": "#000000",
+  "font": "PingFang SC / Microsoft YaHei / brand font",
+  "style": "请填写品牌视觉风格",
+  "logo": "brand/_template/logo.png",
+  "logo_position": "tr",
+  "logo_scale": 0.14
+}

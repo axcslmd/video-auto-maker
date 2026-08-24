@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "model-behavior-profile.schema.json",
+  "title": "Observed LLM behavior profile",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "profile_id", "model_id", "source", "structured_output_mode", "max_safe_schema_depth", "max_safe_items_per_turn", "vision_available", "context_tier", "metrics", "sample_count", "updated_at"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "profile_id": {"type": "string", "minLength": 1, "maxLength": 128},
+    "model_id": {"type": "string", "minLength": 1, "maxLength": 256},
+    "source": {"enum": ["unknown", "declared", "probe", "observed", "merged"]},
+    "structured_output_mode": {"enum": ["native_strict", "tool_schema", "json_text"]},
+    "max_safe_schema_depth": {"type": "integer", "minimum": 1, "maximum": 12},
+    "max_safe_items_per_turn": {"type": "integer", "minimum": 1, "maximum": 24},
+    "vision_available": {"type": "boolean"},
+    "context_tier": {"enum": ["small", "medium", "large"]},
+    "metrics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["tool_call_reliability", "first_pass_schema_rate", "semantic_audit_rate", "repair_success_rate"],
+      "properties": {
+        "tool_call_reliability": {"type": "number", "minimum": 0, "maximum": 1},
+        "first_pass_schema_rate": {"type": "number", "minimum": 0, "maximum": 1},
+        "semantic_audit_rate": {"type": "number", "minimum": 0, "maximum": 1},
+        "repair_success_rate": {"type": "number", "minimum": 0, "maximum": 1}
+      }
+    },
+    "sample_count": {"type": "integer", "minimum": 0},
+    "updated_at": {"type": "string", "minLength": 1, "maxLength": 64}
+  }
+}

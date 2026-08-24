@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "shot-patch.schema.json",
+  "title": "Restricted creative patch proposal",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "question_id", "patches", "assistant_rationale", "unresolved"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "question_id": {"type": "string", "pattern": "^[a-z][a-z0-9_.-]*$", "maxLength": 128},
+    "base_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "patches": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 24,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "value"],
+        "properties": {
+          "path": {"type": "string", "pattern": "^/", "maxLength": 256},
+          "value": {"type": ["string", "number", "boolean", "object", "array", "null"]},
+          "evidence": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["source"],
+            "properties": {
+              "source": {"enum": ["customer_quote", "source_fact", "approved_artifact", "creative_choice"]},
+              "ref": {"type": "string", "maxLength": 256},
+              "quote": {"type": "string", "maxLength": 1000}
+            }
+          }
+        }
+      }
+    },
+    "assistant_rationale": {"type": "string", "maxLength": 2000},
+    "unresolved": {"type": "array", "maxItems": 20, "items": {"type": "string", "minLength": 1, "maxLength": 500}}
+  }
+}

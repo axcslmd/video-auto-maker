@@ -1,0 +1,132 @@
+{
+  "schema_version": 1,
+  "kind": "release_validation",
+  "status": "passed",
+  "generated_at": "2026-08-24T08:07:24+00:00",
+  "project_fingerprint": "d1569b0c432f70186fdfc42b7608e1af4d0a5d7c5168c441007b73c0fe494efe",
+  "python": "CPython 3.9.6",
+  "commands": [
+    {
+      "name": "python_compile",
+      "argv": [
+        "/Library/Developer/CommandLineTools/usr/bin/python3",
+        "-m",
+        "compileall",
+        "-q",
+        "scripts"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "duration_ms": 53
+    },
+    {
+      "name": "workflow_contract",
+      "argv": [
+        "/Library/Developer/CommandLineTools/usr/bin/python3",
+        "scripts/workflow_router.py",
+        "validate"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "7cb11e7e7d93153bbd7b22fd18bfb95afb73a46c3c1a60c3c32fc88b97e908e7",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "duration_ms": 335
+    },
+    {
+      "name": "architecture_contract",
+      "argv": [
+        "/Library/Developer/CommandLineTools/usr/bin/python3",
+        "scripts/architecture_audit.py",
+        "validate"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "8ee2a460b87d202bf155119b02e0c45d67e5137d669def764b667c6d7d047537",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "duration_ms": 1712
+    },
+    {
+      "name": "skill_contract",
+      "argv": [
+        "/Library/Developer/CommandLineTools/usr/bin/python3",
+        "scripts/skill_contract.py",
+        "validate"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "075240dc5e435e15e96439730ab292204ba64be253de34013238e68119fd335c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "duration_ms": 84
+    },
+    {
+      "name": "module_packages",
+      "argv": [
+        "/Library/Developer/CommandLineTools/usr/bin/python3",
+        "scripts/module_packages.py",
+        "validate"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "9bf5d597ef1cce6c355e1727229cc29f9433e59b89ec5ce3fdd64387b7217581",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "duration_ms": 27
+    },
+    {
+      "name": "llm_business_evals",
+      "argv": [
+        "/Library/Developer/CommandLineTools/usr/bin/python3",
+        "scripts/llm_workflow_eval.py",
+        "validate-fixtures",
+        "--cases",
+        "evals/business_cases.json"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "aa4ea7635289ee705c511777d4b6234561b4ad91daf1702a8c7e7cedd80e2d73",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "duration_ms": 67
+    },
+    {
+      "name": "offline_canary",
+      "argv": [
+        "/Library/Developer/CommandLineTools/usr/bin/python3",
+        "scripts/canary_replay.py",
+        "--dry-run"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "315a966ea9f9ab84cab7c75e682edde8f6aa04768d7108d0b3ac0a8598399384",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "duration_ms": 34
+    },
+    {
+      "name": "offline_runtime",
+      "argv": [
+        "/Library/Developer/CommandLineTools/usr/bin/python3",
+        "scripts/offline_setup.py",
+        "check"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "9e96c0ddc7d969576067391e4a1dc2f3f37f792c80ca314b7795aa78b0ae5888",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "duration_ms": 3140
+    },
+    {
+      "name": "tests",
+      "argv": [
+        "/Library/Developer/CommandLineTools/usr/bin/python3",
+        "-m",
+        "pytest",
+        "-q"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "6d4a28cc8d2ffc020974e95ffd3d79daa6e4c423c8235595b1128b7c5021fccc",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "duration_ms": 7499
+    }
+  ],
+  "tests_passed": 334,
+  "invariants": {
+    "business_stage_count": 23,
+    "chain_profile_count": 7,
+    "skill_count": 11,
+    "host_adapter_count": 5,
+    "eval_case_count": 36,
+    "offline_runtime_verified": true
+  }
+}

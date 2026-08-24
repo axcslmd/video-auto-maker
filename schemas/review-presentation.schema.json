@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "review-presentation.schema.json",
+  "title": "Hash-bound customer presentation receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "presentation_id", "stage", "client", "run_id", "channel", "content_fingerprint", "stage_input_fingerprint", "dependency_fingerprint", "artifacts", "presented_at"],
+  "properties": {
+    "schema_version": {"const": 2},
+    "presentation_id": {"type": "string", "minLength": 1},
+    "stage": {"type": "string", "minLength": 1},
+    "client": {"type": "string", "minLength": 1},
+    "run_id": {"type": "string", "minLength": 1},
+    "channel": {"type": "string", "minLength": 1},
+    "content_fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "stage_input_fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "dependency_fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "artifacts": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "sha256", "bytes"],
+        "properties": {
+          "path": {"type": "string", "minLength": 1},
+          "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+          "bytes": {"type": "integer", "minimum": 0}
+        }
+      }
+    },
+    "presented_at": {"type": "string", "minLength": 1}
+  }
+}

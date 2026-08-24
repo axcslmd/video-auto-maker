@@ -1,0 +1,945 @@
+{
+  "schema_version": 1,
+  "cards": [
+    {
+      "id": "spotlight-hero-card",
+      "tier": "production_core",
+      "intents": [
+        "hero",
+        "product"
+      ],
+      "ratios": [
+        "16:9",
+        "9:16",
+        "1:1"
+      ],
+      "source_modes": [
+        "generated_video_plus_overlay",
+        "image_composition"
+      ],
+      "required_assets": [
+        "hero"
+      ],
+      "qa_offsets": [
+        0.1,
+        0.5,
+        0.85
+      ],
+      "version": "2",
+      "renderer": "spotlight_hero",
+      "primary_effect": "spotlight_focus",
+      "motion_speed": "medium",
+      "requires_motion_blur": false,
+      "transition_style": "fade",
+      "hold_min_frames": 15
+    },
+    {
+      "id": "segmented-thumb-hero",
+      "tier": "production_core",
+      "intents": [
+        "hero",
+        "product"
+      ],
+      "ratios": [
+        "16:9",
+        "9:16",
+        "1:1"
+      ],
+      "source_modes": [
+        "image_composition",
+        "generated_video_plus_overlay"
+      ],
+      "required_assets": [
+        "hero"
+      ],
+      "qa_offsets": [
+        0.1,
+        0.5,
+        0.85
+      ],
+      "version": "2",
+      "renderer": "segmented_thumbs",
+      "primary_effect": "segment_focus",
+      "motion_speed": "medium",
+      "requires_motion_blur": false,
+      "transition_style": "slide",
+      "hold_min_frames": 15
+    },
+    {
+      "id": "before-after-slider-scrub",
+      "tier": "production_core",
+      "intents": [
+        "comparison"
+      ],
+      "ratios": [
+        "16:9",
+        "9:16",
+        "1:1"
+      ],
+      "source_modes": [
+        "image_composition",
+        "page_capture"
+      ],
+      "required_assets": [
+        "before",
+        "after"
+      ],
+      "qa_offsets": [
+        0.1,
+        0.5,
+        0.85
+      ],
+      "version": "2",
+      "renderer": "before_after_scrub",
+      "primary_effect": "comparison_scrub",
+      "motion_speed": "medium",
+      "requires_motion_blur": false,
+      "transition_style": "wipe",
+      "hold_min_frames": 15
+    },
+    {
+      "id": "shared-element-morph",
+      "tier": "production_core",
+      "intents": [
+        "transition",
+        "comparison"
+      ],
+      "ratios": [
+        "16:9",
+        "9:16",
+        "1:1"
+      ],
+      "source_modes": [
+        "page_capture",
+        "image_composition"
+      ],
+      "required_assets": [
+        "source",
+        "target"
+      ],
+      "qa_offsets": [
+        0.15,
+        0.5,
+        0.9
+      ],
+      "version": "2",
+      "renderer": "shared_element_morph",
+      "primary_effect": "shared_geometry_morph",
+      "motion_speed": "medium",
+      "requires_motion_blur": false,
+      "transition_style": "fade",
+      "hold_min_frames": 15
+    },
+    {
+      "id": "line-carry-transition",
+      "tier": "production_core",
+      "intents": [
+        "transition",
+        "process"
+      ],
+      "ratios": [
+        "16:9",
+        "9:16",
+        "1:1"
+      ],
+      "source_modes": [
+        "generated_video_plus_overlay",
+        "page_capture"
+      ],
+      "required_assets": [],
+      "qa_offsets": [
+        0.1,
+        0.5,
+        0.9
+      ],
+      "version": "2",
+      "renderer": "line_carry",
+      "primary_effect": "line_carry",
+      "motion_speed": "fast",
+      "requires_motion_blur": true,
+      "transition_style": "slide",
+      "hold_min_frames": 12
+    },
+    {
+      "id": "color-block-step-wipe",
+      "tier": "production_core",
+      "intents": [
+        "transition",
+        "section"
+      ],
+      "ratios": [
+        "16:9",
+        "9:16",
+        "1:1"
+      ],
+      "source_modes": [
+        "generated_video_plus_overlay",
+        "image_composition"
+      ],
+      "required_assets": [],
+      "qa_offsets": [
+        0.1,
+        0.5,
+        0.9
+      ],
+      "version": "2",
+      "renderer": "color_block_steps",
+      "primary_effect": "stepped_color_wipe",
+      "motion_speed": "fast",
+      "requires_motion_blur": true,
+      "transition_style": "wipe",
+      "hold_min_frames": 12
+    },
+    {
+      "id": "circle-match-iris",
+      "tier": "production_core",
+      "intents": [
+        "transition",
+        "focus"
+      ],
+      "ratios": [
+        "16:9",
+        "9:16",
+        "1:1"
+      ],
+      "source_modes": [
+        "generated_video_plus_overlay",
+        "image_composition"
+      ],
+      "required_assets": [],
+      "qa_offsets": [
+        0.1,
+        0.5,
+        0.9
+      ],
+      "version": "2",
+      "renderer": "circle_match_iris",
+      "primary_effect": "matched_iris",
+      "motion_speed": "fast",
+      "requires_motion_blur": true,
+      "transition_style": "iris",
+      "hold_min_frames": 12
+    },
+    {
+      "id": "title-demote-to-label",
+      "tier": "production_core",
+      "intents": [
+        "title",
+        "section"
+      ],
+      "ratios": [
+        "16:9",
+        "9:16",
+        "1:1"
+      ],
+      "source_modes": [
+        "generated_video_plus_overlay",
+        "image_composition",
+        "page_capture"
+      ],
+      "required_assets": [],
+      "qa_offsets": [
+        0.1,
+        0.55,
+        0.9
+      ],
+      "version": "2",
+      "renderer": "title_demote",
+      "primary_effect": "title_scale_reposition",
+      "motion_speed": "medium",
+      "requires_motion_blur": false,
+      "transition_style": "fade",
+      "hold_min_frames": 15
+    },
+    {
+      "id": "brand-frame-snap",
+      "tier": "production_core",
+      "intents": [
+        "brand",
+        "outro"
+      ],
+      "ratios": [
+        "16:9",
+        "9:16",
+        "1:1"
+      ],
+      "source_modes": [
+        "image_composition",
+        "generated_video_plus_overlay"
+      ],
+      "required_assets": [],
+      "qa_offsets": [
+        0.15,
+        0.5,
+        0.85
+      ],
+      "version": "2",
+      "renderer": "brand_frame_snap",
+      "primary_effect": "frame_snap",
+      "motion_speed": "medium",
+      "requires_motion_blur": false,
+      "transition_style": "fade",
+      "hold_min_frames": 15
+    },
+    {
+      "id": "brand-ink-open",
+      "tier": "production_core",
+      "intents": [
+        "brand",
+        "hero"
+      ],
+      "ratios": [
+        "16:9",
+        "9:16",
+        "1:1"
+      ],
+      "source_modes": [
+        "image_composition",
+        "generated_video_plus_overlay"
+      ],
+      "required_assets": [],
+      "qa_offsets": [
+        0.1,
+        0.5,
+        0.9
+      ],
+      "version": "2",
+      "renderer": "brand_ink_open",
+      "primary_effect": "ink_mask_open",
+      "motion_speed": "medium",
+      "requires_motion_blur": false,
+      "transition_style": "iris",
+      "hold_min_frames": 15
+    },
+    {
+      "id": "logo-sting-button",
+      "tier": "production_core",
+      "intents": [
+        "cta",
+        "brand",
+        "outro"
+      ],
+      "ratios": [
+        "16:9",
+        "9:16",
+        "1:1"
+      ],
+      "source_modes": [
+        "image_composition"
+      ],
+      "required_assets": [
+        "logo"
+      ],
+      "qa_offsets": [
+        0.1,
+        0.5,
+        0.9
+      ],
+      "version": "2",
+      "renderer": "logo_sting",
+      "primary_effect": "logo_sting_press",
+      "motion_speed": "medium",
+      "requires_motion_blur": false,
+      "transition_style": "fade",
+      "hold_min_frames": 15
+    },
+    {
+      "id": "data-viz-landscape-open",
+      "tier": "production_core",
+      "intents": [
+        "data",
+        "proof"
+      ],
+      "ratios": [
+        "16:9"
+      ],
+      "source_modes": [
+        "page_capture",
+        "image_composition"
+      ],
+      "required_assets": [
+        "data"
+      ],
+      "qa_offsets": [
+        0.1,
+        0.5,
+        0.85
+      ],
+      "version": "2",
+      "renderer": "data_landscape",
+      "primary_effect": "chart_landscape_open",
+      "motion_speed": "medium",
+      "requires_motion_blur": false,
+      "transition_style": "slide",
+      "hold_min_frames": 15
+    },
+    {
+      "id": "odometer-digit-roll",
+      "tier": "production_core",
+      "intents": [
+        "data",
+        "metric"
+      ],
+      "ratios": [
+        "16:9",
+        "9:16",
+        "1:1"
+      ],
+      "source_modes": [
+        "generated_video_plus_overlay",
+        "image_composition"
+      ],
+      "required_assets": [],
+      "qa_offsets": [
+        0.1,
+        0.5,
+        0.85
+      ],
+      "version": "2",
+      "renderer": "odometer_roll",
+      "primary_effect": "odometer_roll",
+      "motion_speed": "medium",
+      "requires_motion_blur": false,
+      "transition_style": "fade",
+      "hold_min_frames": 15
+    },
+    {
+      "id": "gauge-readout-moves",
+      "tier": "production_plus",
+      "intents": [
+        "data",
+        "metric"
+      ],
+      "ratios": [
+        "16:9",
+        "9:16",
+        "1:1"
+      ],
+      "source_modes": [
+        "image_composition",
+        "page_capture"
+      ],
+      "required_assets": [
+        "data"
+      ],
+      "qa_offsets": [
+        0.1,
+        0.5,
+        0.85
+      ],
+      "version": "2",
+      "renderer": "gauge_readout",
+      "primary_effect": "gauge_sweep",
+      "motion_speed": "medium",
+      "requires_motion_blur": false,
+      "transition_style": "fade",
+      "hold_min_frames": 15
+    },
+    {
+      "id": "document-typewriter-reveal",
+      "tier": "production_core",
+      "intents": [
+        "proof",
+        "document"
+      ],
+      "ratios": [
+        "16:9",
+        "9:16",
+        "1:1"
+      ],
+      "source_modes": [
+        "page_capture",
+        "image_composition"
+      ],
+      "required_assets": [
+        "document"
+      ],
+      "qa_offsets": [
+        0.1,
+        0.5,
+        0.9
+      ],
+      "version": "2",
+      "renderer": "document_typewriter",
+      "primary_effect": "document_line_reveal",
+      "motion_speed": "medium",
+      "requires_motion_blur": false,
+      "transition_style": "slide",
+      "hold_min_frames": 15
+    },
+    {
+      "id": "row-embed",
+      "tier": "production_core",
+      "intents": [
+        "proof",
+        "document",
+        "feature"
+      ],
+      "ratios": [
+        "16:9",
+        "9:16",
+        "1:1"
+      ],
+      "source_modes": [
+        "page_capture",
+        "image_composition"
+      ],
+      "required_assets": [
+        "row"
+      ],
+      "qa_offsets": [
+        0.1,
+        0.5,
+        0.9
+      ],
+      "version": "2",
+      "renderer": "row_embed",
+      "primary_effect": "row_depth_embed",
+      "motion_speed": "medium",
+      "requires_motion_blur": false,
+      "transition_style": "slide",
+      "hold_min_frames": 15
+    },
+    {
+      "id": "page-waterfall-wall",
+      "tier": "production_plus",
+      "intents": [
+        "proof",
+        "document"
+      ],
+      "ratios": [
+        "16:9",
+        "9:16",
+        "1:1"
+      ],
+      "source_modes": [
+        "page_capture"
+      ],
+      "required_assets": [
+        "pages"
+      ],
+      "qa_offsets": [
+        0.1,
+        0.5,
+        0.85
+      ],
+      "version": "2",
+      "renderer": "page_waterfall",
+      "primary_effect": "page_waterfall_3d",
+      "motion_speed": "fast",
+      "requires_motion_blur": true,
+      "transition_style": "slide",
+      "hold_min_frames": 12
+    },
+    {
+      "id": "timeline-travel",
+      "tier": "production_core",
+      "intents": [
+        "timeline",
+        "process"
+      ],
+      "ratios": [
+        "16:9",
+        "9:16",
+        "1:1"
+      ],
+      "source_modes": [
+        "page_capture",
+        "image_composition"
+      ],
+      "required_assets": [
+        "timeline"
+      ],
+      "qa_offsets": [
+        0.1,
+        0.5,
+        0.85
+      ],
+      "version": "2",
+      "renderer": "timeline_travel",
+      "primary_effect": "timeline_camera_travel",
+      "motion_speed": "medium",
+      "requires_motion_blur": false,
+      "transition_style": "slide",
+      "hold_min_frames": 15
+    },
+    {
+      "id": "integration-hub-map",
+      "tier": "production_core",
+      "intents": [
+        "process",
+        "integration"
+      ],
+      "ratios": [
+        "16:9",
+        "9:16",
+        "1:1"
+      ],
+      "source_modes": [
+        "image_composition",
+        "page_capture"
+      ],
+      "required_assets": [
+        "nodes"
+      ],
+      "qa_offsets": [
+        0.1,
+        0.5,
+        0.85
+      ],
+      "version": "2",
+      "renderer": "integration_hub",
+      "primary_effect": "node_link_reveal",
+      "motion_speed": "medium",
+      "requires_motion_blur": false,
+      "transition_style": "fade",
+      "hold_min_frames": 15
+    },
+    {
+      "id": "card-flip-reveal",
+      "tier": "production_core",
+      "intents": [
+        "feature",
+        "reveal"
+      ],
+      "ratios": [
+        "16:9",
+        "9:16",
+        "1:1"
+      ],
+      "source_modes": [
+        "image_composition"
+      ],
+      "required_assets": [
+        "card"
+      ],
+      "qa_offsets": [
+        0.1,
+        0.5,
+        0.9
+      ],
+      "version": "2",
+      "renderer": "card_flip",
+      "primary_effect": "card_flip",
+      "motion_speed": "fast",
+      "requires_motion_blur": true,
+      "transition_style": "flip",
+      "hold_min_frames": 12
+    },
+    {
+      "id": "deck-deal-flyin",
+      "tier": "production_plus",
+      "intents": [
+        "feature",
+        "montage"
+      ],
+      "ratios": [
+        "16:9",
+        "9:16",
+        "1:1"
+      ],
+      "source_modes": [
+        "image_composition",
+        "page_capture"
+      ],
+      "required_assets": [
+        "cards"
+      ],
+      "qa_offsets": [
+        0.1,
+        0.5,
+        0.85
+      ],
+      "version": "2",
+      "renderer": "deck_deal",
+      "primary_effect": "deck_deal_flyin",
+      "motion_speed": "fast",
+      "requires_motion_blur": true,
+      "transition_style": "slide",
+      "hold_min_frames": 12
+    },
+    {
+      "id": "marker-underline-title",
+      "tier": "production_core",
+      "intents": [
+        "emphasis",
+        "title"
+      ],
+      "ratios": [
+        "16:9",
+        "9:16",
+        "1:1"
+      ],
+      "source_modes": [
+        "generated_video_plus_overlay"
+      ],
+      "required_assets": [],
+      "qa_offsets": [
+        0.15,
+        0.5,
+        0.9
+      ],
+      "version": "2",
+      "renderer": "marker_underline",
+      "primary_effect": "marker_draw",
+      "motion_speed": "medium",
+      "requires_motion_blur": false,
+      "transition_style": "fade",
+      "hold_min_frames": 15
+    },
+    {
+      "id": "letterspace-materialize",
+      "tier": "production_core",
+      "intents": [
+        "title",
+        "brand"
+      ],
+      "ratios": [
+        "16:9",
+        "9:16",
+        "1:1"
+      ],
+      "source_modes": [
+        "generated_video_plus_overlay"
+      ],
+      "required_assets": [],
+      "qa_offsets": [
+        0.1,
+        0.5,
+        0.9
+      ],
+      "version": "2",
+      "renderer": "letterspace_materialize",
+      "primary_effect": "letterspace_materialize",
+      "motion_speed": "medium",
+      "requires_motion_blur": false,
+      "transition_style": "fade",
+      "hold_min_frames": 15
+    },
+    {
+      "id": "type-rhythm-sync",
+      "tier": "production_plus",
+      "intents": [
+        "emphasis",
+        "caption"
+      ],
+      "ratios": [
+        "16:9",
+        "9:16",
+        "1:1"
+      ],
+      "source_modes": [
+        "generated_video_plus_overlay"
+      ],
+      "required_assets": [],
+      "qa_offsets": [
+        0.1,
+        0.5,
+        0.9
+      ],
+      "version": "2",
+      "renderer": "type_rhythm",
+      "primary_effect": "type_rhythm_pulse",
+      "motion_speed": "fast",
+      "requires_motion_blur": true,
+      "transition_style": "fade",
+      "hold_min_frames": 12
+    },
+    {
+      "id": "split-flap-title",
+      "tier": "production_plus",
+      "intents": [
+        "title",
+        "data"
+      ],
+      "ratios": [
+        "16:9",
+        "9:16",
+        "1:1"
+      ],
+      "source_modes": [
+        "generated_video_plus_overlay"
+      ],
+      "required_assets": [],
+      "qa_offsets": [
+        0.1,
+        0.5,
+        0.9
+      ],
+      "version": "2",
+      "renderer": "split_flap",
+      "primary_effect": "split_flap",
+      "motion_speed": "fast",
+      "requires_motion_blur": true,
+      "transition_style": "fade",
+      "hold_min_frames": 12
+    },
+    {
+      "id": "beat-cut-moves",
+      "tier": "production_plus",
+      "intents": [
+        "montage",
+        "transition"
+      ],
+      "ratios": [
+        "16:9",
+        "9:16",
+        "1:1"
+      ],
+      "source_modes": [
+        "generated_video_plus_overlay",
+        "image_composition"
+      ],
+      "required_assets": [],
+      "qa_offsets": [
+        0.1,
+        0.5,
+        0.9
+      ],
+      "version": "2",
+      "renderer": "beat_cut",
+      "primary_effect": "beat_cut",
+      "motion_speed": "fast",
+      "requires_motion_blur": true,
+      "transition_style": "wipe",
+      "hold_min_frames": 12
+    },
+    {
+      "id": "crash-zoom-punch",
+      "tier": "production_plus",
+      "intents": [
+        "impact",
+        "transition"
+      ],
+      "ratios": [
+        "16:9",
+        "9:16",
+        "1:1"
+      ],
+      "source_modes": [
+        "generated_video_plus_overlay",
+        "image_composition"
+      ],
+      "required_assets": [],
+      "qa_offsets": [
+        0.1,
+        0.5,
+        0.9
+      ],
+      "version": "2",
+      "renderer": "crash_zoom",
+      "primary_effect": "crash_zoom",
+      "motion_speed": "fast",
+      "requires_motion_blur": true,
+      "transition_style": "iris",
+      "hold_min_frames": 12
+    },
+    {
+      "id": "slam-entrance-moves",
+      "tier": "production_plus",
+      "intents": [
+        "hero",
+        "impact"
+      ],
+      "ratios": [
+        "16:9",
+        "9:16",
+        "1:1"
+      ],
+      "source_modes": [
+        "generated_video_plus_overlay",
+        "image_composition"
+      ],
+      "required_assets": [],
+      "qa_offsets": [
+        0.1,
+        0.5,
+        0.85
+      ],
+      "version": "2",
+      "renderer": "slam_entrance",
+      "primary_effect": "slam_entrance",
+      "motion_speed": "fast",
+      "requires_motion_blur": true,
+      "transition_style": "slide",
+      "hold_min_frames": 12
+    },
+    {
+      "id": "shot-transitions",
+      "tier": "production_plus",
+      "intents": [
+        "transition"
+      ],
+      "ratios": [
+        "16:9",
+        "9:16",
+        "1:1"
+      ],
+      "source_modes": [
+        "generated_video_plus_overlay",
+        "image_composition"
+      ],
+      "required_assets": [],
+      "qa_offsets": [
+        0.1,
+        0.5,
+        0.9
+      ],
+      "version": "2",
+      "renderer": "shot_transition",
+      "primary_effect": "multi_axis_transition",
+      "motion_speed": "fast",
+      "requires_motion_blur": true,
+      "transition_style": "wipe",
+      "hold_min_frames": 12
+    },
+    {
+      "id": "ui-strip-away-outro",
+      "tier": "production_core",
+      "intents": [
+        "outro",
+        "cta"
+      ],
+      "ratios": [
+        "16:9",
+        "9:16",
+        "1:1"
+      ],
+      "source_modes": [
+        "page_capture",
+        "image_composition"
+      ],
+      "required_assets": [
+        "ui"
+      ],
+      "qa_offsets": [
+        0.1,
+        0.5,
+        0.9
+      ],
+      "version": "2",
+      "renderer": "ui_strip_away",
+      "primary_effect": "ui_strip_away",
+      "motion_speed": "medium",
+      "requires_motion_blur": false,
+      "transition_style": "slide",
+      "hold_min_frames": 15
+    }
+  ],
+  "quality_contract": {
+    "one_primary_effect_per_shot": true,
+    "hold_min_frames": 15,
+    "transition_requires_beat": true,
+    "fast_motion_requires_blur": true,
+    "text_owner": "hyperframes",
+    "safe_zone_source": "visual_analysis",
+    "rendered_frame_qc": true
+  },
+  "runtime_dependencies": {
+    "transitions": "@remotion/transitions",
+    "motion_blur": "@remotion/motion-blur",
+    "lottie": "@remotion/lottie",
+    "rive": "@remotion/rive",
+    "three": "@remotion/three"
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "version": 1,
+  "source": "REAL_TEST_INCIDENTS.md#严格执行规则 (2026-07-31)",
+  "note": "环境无 pyyaml，策略文件使用 JSON（gates.yaml 的等价替代）。",
+  "gates": [
+    {
+      "id": "GATE-001",
+      "name": "产品原图未确认阻断",
+      "trigger": "approve_asset",
+      "check": "asset_confirmed",
+      "params": {"asset_key": "product_hero", "require_fingerprint": true},
+      "block_message": "产品原图尚未确认或缺少指纹登记。请先完成产品原图上传、签名校验与客户确认，再进入后续阶段。"
+    },
+    {
+      "id": "GATE-002",
+      "name": "产品本体九宫格未确认阻断",
+      "trigger": "submit_video",
+      "check": "asset_confirmed",
+      "params": {"asset_key": "product_board", "require_fingerprint": true},
+      "block_message": "产品本体九宫格尚未确认。未确认的产品板不能进入视频生成，请先完成确认。"
+    },
+    {
+      "id": "GATE-003",
+      "name": "数字人六视图未确认阻断",
+      "trigger": "submit_video",
+      "check": "asset_confirmed",
+      "params": {"asset_key": "digital_human_board", "require_fingerprint": true},
+      "block_message": "数字人六视图尚未确认。未确认的人物板不能进入视频生成，请先完成确认。"
+    },
+    {
+      "id": "GATE-004",
+      "name": "产品使用九宫格未确认阻断",
+      "trigger": "submit_video",
+      "check": "asset_confirmed",
+      "params": {"asset_key": "product_usage_board", "require_fingerprint": true},
+      "block_message": "产品使用九宫格尚未确认。已确认的佩戴/使用参考是视频阶段的硬契约，请先完成确认。"
+    },
+    {
+      "id": "GATE-005",
+      "name": "故事板未确认阻断",
+      "trigger": "submit_video",
+      "check": "asset_confirmed",
+      "params": {"asset_key": "storyboard", "require_fingerprint": true},
+      "block_message": "故事板尚未获得客户确认。故事板未确认前禁止调用视频模型，旧目录中的故事板不具备新计划的确认资格。"
+    },
+    {
+      "id": "GATE-006",
+      "name": "脚本计划素材指纹不一致阻断",
+      "trigger": "load_plan",
+      "check": "fingerprint_current",
+      "params": {"keys": ["script", "plan", "assets", "handoff"]},
+      "block_message": "脚本、计划或素材的指纹与当前确认版本不一致，可能加载了旧计划或旧素材。已阻断，请重新生成并对齐指纹后再继续。"
+    },
+    {
+      "id": "GATE-007",
+      "name": "必需参考素材交接不完整阻断",
+      "trigger": "submit_video",
+      "check": "required_refs_complete",
+      "params": {"fail_on_dropped": true},
+      "block_message": "已确认的必需参考素材无法完整交给目标模型（存在缺失或被丢弃的参考类型）。正式流程已阻断，不允许用少传素材换取提交成功。"
+    },
+    {
+      "id": "GATE-008",
+      "name": "目标模型能力不足且无完整匹配候选阻断",
+      "trigger": "submit_video",
+      "check": "model_capability_match",
+      "params": {"capability_keys": ["image_count", "duration_min", "duration_max", "video_types"], "allow_full_match_fallback": true},
+      "block_message": "目标模型不可用或能力不足，且没有能完整承接全部参考图、时长与类型要求的候选模型。已阻断；不允许以减少参考图或改动脚本的方式绕过。"
+    },
+    {
+      "id": "GATE-009",
+      "name": "视频OCR检出画面文字阻断",
+      "trigger": "deliver",
+      "check": "ocr_clear",
+      "params": {},
+      "block_message": "视频 OCR 检出模型自行绘制的画面文字，该版本不予交付。请使用无文字提示词与 negative prompt 重新生成并通过 OCR 后再交付。"
+    },
+    {
+      "id": "GATE-010",
+      "name": "预算超支阻断",
+      "trigger": "submit_video",
+      "check": "budget_within",
+      "params": {},
+      "block_message": "本次生成预计费用超出预算上限，已阻断提交。请确认预算或调整生成范围后再继续。"
+    }
+  ]
+}

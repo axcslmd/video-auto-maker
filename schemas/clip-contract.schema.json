@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Marketing Video Clip Contract",
+  "type": "object",
+  "required": ["version", "scopes"],
+  "properties": {
+    "version": {"const": 1},
+    "scope": {
+      "type": "object",
+      "properties": {
+        "already_happened": {"type": "array", "items": {"type": "string"}},
+        "this_clip_only": {"type": "array", "items": {"type": "string"}},
+        "reserved_for_later": {"type": "array", "items": {"type": "string"}},
+        "endpoint": {"type": ["string", "object"]}
+      }
+    },
+    "scopes": {
+      "type": "object",
+      "required": ["global", "scene", "clip", "beats"],
+      "properties": {
+        "global": {"type": "object"},
+        "scene": {"type": "object"},
+        "clip": {"type": "object"},
+        "beats": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "panel_index": {"type": "integer", "minimum": 1},
+              "ref_tags": {
+                "type": "array",
+                "items": {"type": "string", "pattern": "^@[a-z][a-z0-9_]*$"}
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

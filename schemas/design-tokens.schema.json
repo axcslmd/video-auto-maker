@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Executable Design Token v3",
+  "type": "object",
+  "required": ["schema_version", "approved_direction", "brand", "color", "typography", "spacing", "layout", "surface", "media", "motion", "mastering", "artifact_contract", "contract_sha256"],
+  "properties": {
+    "schema_version": {"const": 3},
+    "approved_direction": {"enum": ["premium_editorial", "clean_corporate", "technical_system", "energetic_social", "custom"]},
+    "contract_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "brand": {
+      "type": "object",
+      "required": ["primary", "accent", "background", "text"],
+      "properties": {
+        "primary": {"type": "string", "pattern": "^#[0-9A-F]{6}$"},
+        "accent": {"type": "string", "pattern": "^#[0-9A-F]{6}$"},
+        "background": {"type": "string", "pattern": "^#[0-9A-F]{6}$"},
+        "text": {"type": "string", "pattern": "^#[0-9A-F]{6}$"}
+      }
+    },
+    "color": {"type": "object", "required": ["primary", "accent", "background", "surface", "text", "text_secondary"]},
+    "typography": {"type": "object", "required": ["display_family", "body_family", "scale", "display_weight", "body_weight", "line_height"]},
+    "spacing": {"type": "object", "required": ["base", "landscape", "portrait"]},
+    "layout": {"type": "object", "required": ["grid_columns", "safe_margin_ratio", "subtitle_reserved_ratio", "max_primary_subjects", "max_secondary_subjects"]},
+    "surface": {"type": "object", "required": ["material", "radius", "border_width", "shadow", "blur"]},
+    "media": {"type": "object", "required": ["image_radius", "image_treatment", "overlay_strength", "upscale_limit", "protected_subject_crop"]},
+    "motion": {"type": "object", "required": ["energy", "personality", "signature_easing", "active_motion_limit", "entry_duration_frames", "settle_duration_frames", "stagger_frames", "hold_min_frames", "transition_style", "transition_frames"]},
+    "mastering": {"type": "object", "required": ["working_profile", "delivery_profile", "frame_format", "color_space", "audio_sample_rate", "single_lossy_encode"]},
+    "artifact_contract": {"type": "object", "required": ["role", "approves", "does_not_approve", "renderer_source_of_truth"]}
+  }
+}

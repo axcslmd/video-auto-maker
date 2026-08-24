@@ -1,0 +1,17 @@
+[project]
+name = "basicrouter-marketing-video-agent"
+version = "4.2.0"
+description = "Host-neutral, approval-gated marketing video agent runtime"
+requires-python = ">=3.9"
+license = "LicenseRef-PolyForm-Noncommercial-1.0.0"
+license-files = ["LICENSE", "NOTICE"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = "-ra"
+
+[tool.coverage.run]
+branch = true
+source = ["scripts"]
+omit = ["scripts/*_missing_runtime.mjs"]

@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "experience-packet.schema.json",
+  "title": "Customer-centered workflow experience packet",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "protocol_version", "stage", "milestone", "progress",
+    "primary_action", "secondary_actions", "chain_profile", "host",
+    "missing_host_capabilities", "blockers", "artifacts", "review_pack",
+    "impact_preview", "interaction_contract", "guidance_index"
+  ],
+  "properties": {
+    "schema_version": {"const": 2},
+    "protocol_version": {"type": "string", "minLength": 1},
+    "stage": {"type": "string", "minLength": 1},
+    "milestone": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "title", "state", "completed_units", "total_units"],
+      "properties": {
+        "id": {"enum": ["plan", "previs", "generation_review", "finish_delivery"]},
+        "title": {"type": "string", "minLength": 1},
+        "state": {"enum": ["completed", "failed", "stale", "in_progress", "ready", "blocked"]},
+        "completed_units": {"type": "integer", "minimum": 0},
+        "total_units": {"type": "integer", "minimum": 0}
+      }
+    },
+    "progress": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["completed_milestones", "total_milestones", "label"],
+      "properties": {
+        "completed_milestones": {"type": "integer", "minimum": 0, "maximum": 4},
+        "total_milestones": {"const": 4},
+        "label": {"type": "string", "minLength": 1}
+      }
+    },
+    "primary_action": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "label", "stage", "enabled", "requires_customer", "cost_class"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "label": {"type": "string", "minLength": 1},
+        "stage": {"type": "string", "minLength": 1},
+        "enabled": {"type": "boolean"},
+        "requires_customer": {"type": "boolean"},
+        "cost_class": {"enum": ["local_deterministic", "paid_image", "paid_video"]}
+      }
+    },
+    "secondary_actions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "label"],
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "label": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "chain_profile": {"type": "object"},
+    "host": {"type": "object"},
+    "missing_host_capabilities": {"type": "array", "items": {"type": "string"}},
+    "blockers": {"type": "array", "items": {"type": "string"}},
+    "artifacts": {"type": "array", "items": {"type": "object"}},
+    "review_pack": {
+      "type": ["object", "null"]
+    },
+    "impact_preview": {
+      "type": ["object", "null"]
+    },
+    "interaction_contract": {"type": "object"},
+    "guidance_index": {"type": "array", "items": {"type": "string"}}
+  }
+}

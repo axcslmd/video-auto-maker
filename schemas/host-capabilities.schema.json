@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "host-capabilities.schema.json",
+  "title": "Host execution capabilities",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "host_id", "source", "capabilities"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "host_id": {"type": "string", "minLength": 1, "maxLength": 64},
+    "source": {"type": "string", "minLength": 1, "maxLength": 128},
+    "capabilities": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["local_files", "python", "stdout_json", "stdin_secret", "image_preview", "video_preview", "progress_stream", "tool_calling", "mcp", "slash_commands"],
+      "properties": {
+        "local_files": {"type": "boolean"},
+        "python": {"type": "boolean"},
+        "stdout_json": {"type": "boolean"},
+        "stdin_secret": {"type": "boolean"},
+        "image_preview": {"type": "boolean"},
+        "video_preview": {"type": "boolean"},
+        "progress_stream": {"type": "boolean"},
+        "tool_calling": {"type": "boolean"},
+        "mcp": {"type": "boolean"},
+        "slash_commands": {"type": "boolean"}
+      }
+    }
+  }
+}

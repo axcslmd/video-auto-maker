@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "interaction-contract.schema.json",
+  "title": "Bounded stage interaction contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "packet_version", "stage", "question_id", "objective", "known_facts", "immutable_facts", "forbidden_claims", "choices", "editable_paths", "protected_paths", "response_schema", "validation_command", "success_criteria", "max_items_per_turn", "repair_actions", "allowed_actions", "artifacts_to_show", "approval_request", "interaction_policy"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "packet_version": {"type": "string", "minLength": 1, "maxLength": 32},
+    "stage": {"type": "string", "minLength": 1, "maxLength": 64},
+    "question_id": {"type": "string", "pattern": "^[a-z][a-z0-9_.-]*$", "maxLength": 128},
+    "objective": {"type": "string", "minLength": 1, "maxLength": 500},
+    "known_facts": {"type": "array", "maxItems": 80, "items": {"type": "object"}},
+    "immutable_facts": {"type": "array", "maxItems": 40, "items": {"type": "string", "minLength": 1, "maxLength": 500}},
+    "forbidden_claims": {"type": "array", "maxItems": 40, "items": {"type": "string", "minLength": 1, "maxLength": 500}},
+    "choices": {"type": "array", "maxItems": 8, "items": {"type": "object"}},
+    "editable_paths": {"type": "array", "minItems": 1, "maxItems": 40, "uniqueItems": true, "items": {"type": "string", "pattern": "^/", "maxLength": 256}},
+    "protected_paths": {"type": "array", "minItems": 1, "maxItems": 80, "uniqueItems": true, "items": {"type": "string", "pattern": "^/", "maxLength": 256}},
+    "response_schema": {"type": "object", "minProperties": 1},
+    "validation_command": {"type": "string", "minLength": 1, "maxLength": 500},
+    "success_criteria": {"type": "array", "minItems": 1, "maxItems": 20, "items": {"type": "string", "minLength": 1, "maxLength": 500}},
+    "max_items_per_turn": {"type": "integer", "minimum": 1, "maximum": 24},
+    "repair_actions": {"type": "array", "maxItems": 20, "items": {"type": "string", "minLength": 1, "maxLength": 128}},
+    "allowed_actions": {"type": "array", "minItems": 1, "maxItems": 20, "uniqueItems": true, "items": {"type": "string", "minLength": 1, "maxLength": 64}},
+    "artifacts_to_show": {"type": "array", "maxItems": 40, "uniqueItems": true, "items": {"type": "string", "minLength": 1, "maxLength": 4096}},
+    "approval_request": {"type": ["object", "null"]},
+    "interaction_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["tier", "mode", "reason"],
+      "properties": {
+        "tier": {"enum": ["low", "medium", "high"]},
+        "mode": {"enum": ["atomic", "batched", "composite"]},
+        "reason": {"type": "string", "minLength": 1, "maxLength": 500}
+      }
+    }
+  }
+}

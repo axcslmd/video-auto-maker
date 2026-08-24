@@ -1,0 +1,50 @@
+# Remotion 引擎依赖与缓存（deploy.sh 在目标机 npm install 重建，勿入库/勿打包）
+remotion_engine/node_modules/
+remotion_engine/.remotion/
+remotion_engine/out/
+remotion_engine/public/*
+!remotion_engine/public/.gitkeep
+
+# 渲染产物 / 客户输出
+output/
+_props.json
+_props_*.json
+*.staged.json
+
+# 客户素材与品牌数据默认不入公共源码；只保留通用模板。
+assets/*
+!assets/_template/
+!assets/_template/**
+brand/*
+!brand/_template/
+!brand/_template/**
+actors/*
+!actors/_template/
+!actors/_template/**
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# 系统
+.DS_Store
+
+# 离线预下载二进制（deploy.sh 在目标机按需下载，勿入库）
+offline-assets/
+
+# WorkBuddy 内部记忆（项目级会话数据）；只跟踪公共薄入口 Skill。
+.workbuddy/*
+!.workbuddy/skills/
+.workbuddy/skills/*
+!.workbuddy/skills/video-auto-maker/
+!.workbuddy/skills/video-auto-maker/SKILL.md
+# Codex 本地预览/渲染缓存（可能包含客户素材）
+.codex-tmp/
+unittest_client_*/
+assets/unittest_client_*/
+_tmp_test_*
+
+# 本地交付包由验证后的构建流程生成，不进入源码提交
+dist/

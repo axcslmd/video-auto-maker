@@ -1,0 +1,130 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://shotcraft.local/schemas/cast-reference-pack.schema.json",
+  "title": "Cast single-view reference pack",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "kind",
+    "source_board",
+    "grid",
+    "primary_identity_anchor",
+    "full_body_identity_anchor",
+    "views",
+    "usage_contract"
+  ],
+  "properties": {
+    "schema_version": {"const": 1},
+    "kind": {"const": "cast_single_view_reference_pack"},
+    "source_board": {
+      "allOf": [
+        {"$ref": "#/$defs/fileRecord"},
+        {
+          "type": "object",
+          "required": [
+            "board_type",
+            "review_artifact_only",
+            "direct_presenter_input_allowed",
+            "direct_video_model_input_allowed"
+          ],
+          "properties": {
+            "board_type": {"const": "digital_human_6_view"},
+            "review_artifact_only": {"const": true},
+            "direct_presenter_input_allowed": {"const": false},
+            "direct_video_model_input_allowed": {"const": false}
+          }
+        }
+      ]
+    },
+    "grid": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["columns", "rows"],
+      "properties": {
+        "columns": {"const": 3},
+        "rows": {"const": 2}
+      }
+    },
+    "primary_identity_anchor": {"const": "face_front"},
+    "full_body_identity_anchor": {"const": "full_body_front"},
+    "views": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "full_body_front",
+        "full_body_back",
+        "full_body_profile",
+        "face_front",
+        "face_back",
+        "face_profile"
+      ],
+      "properties": {
+        "full_body_front": {"$ref": "#/$defs/viewRecord"},
+        "full_body_back": {"$ref": "#/$defs/viewRecord"},
+        "full_body_profile": {"$ref": "#/$defs/viewRecord"},
+        "face_front": {"$ref": "#/$defs/viewRecord"},
+        "face_back": {"$ref": "#/$defs/viewRecord"},
+        "face_profile": {"$ref": "#/$defs/viewRecord"}
+      }
+    },
+    "usage_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "customer_review",
+        "local_previs",
+        "image_generation_identity",
+        "video_generation"
+      ],
+      "properties": {
+        "customer_review": {"const": "source_board"},
+        "local_previs": {"const": "full_body_front"},
+        "image_generation_identity": {
+          "const": ["face_front", "full_body_front"]
+        },
+        "video_generation": {
+          "const": "separately_confirmed_single_person_remote_identity_plate"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "fileRecord": {
+      "type": "object",
+      "required": ["path", "sha256", "size"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "size": {"type": "integer", "minimum": 1}
+      }
+    },
+    "viewRecord": {
+      "allOf": [
+        {"$ref": "#/$defs/fileRecord"},
+        {
+          "type": "object",
+          "required": ["cell", "crop_box", "remote_video_input_allowed"],
+          "properties": {
+            "cell": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["column", "row"],
+              "properties": {
+                "column": {"type": "integer", "minimum": 0, "maximum": 2},
+                "row": {"type": "integer", "minimum": 0, "maximum": 1}
+              }
+            },
+            "crop_box": {
+              "type": "array",
+              "items": {"type": "integer", "minimum": 0},
+              "minItems": 4,
+              "maxItems": 4
+            },
+            "remote_video_input_allowed": {"const": false}
+          }
+        }
+      ]
+    }
+  }
+}

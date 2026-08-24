@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "creative-brief.schema.json",
+  "title": "Customer-approved creative brief proposal",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "client", "profile", "objective", "audience", "channel", "primary_usp", "tone", "cta", "fact_refs", "output_ratio"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "client": {"type": "string", "pattern": "^[a-z0-9][a-z0-9_-]*$", "maxLength": 48},
+    "run_id": {"type": "string", "minLength": 1, "maxLength": 64},
+    "profile": {"enum": ["oral_broadcast", "document_explainer", "product_showcase", "product_with_human", "venue_service", "brand_tvc", "generic_video"]},
+    "package": {"enum": ["oral-broadcast", "explainer", "brand-tvc"]},
+    "objective": {"type": "string", "minLength": 1, "maxLength": 1000},
+    "audience": {"type": "string", "minLength": 1, "maxLength": 1000},
+    "channel": {"type": "string", "minLength": 1, "maxLength": 200},
+    "primary_usp": {"type": "string", "minLength": 1, "maxLength": 1000},
+    "secondary_points": {"type": "array", "maxItems": 4, "uniqueItems": true, "items": {"type": "string", "minLength": 1, "maxLength": 500}},
+    "tone": {"type": "string", "minLength": 1, "maxLength": 500},
+    "cta": {"type": "string", "minLength": 1, "maxLength": 500},
+    "digital_human": {"type": "object"},
+    "fact_refs": {"type": "array", "uniqueItems": true, "maxItems": 100, "items": {"type": "string", "pattern": "^[a-z][a-z0-9_.-]*$", "maxLength": 128}},
+    "output_ratio": {"enum": ["16:9", "9:16", "1:1", "4:3", "3:4"]},
+    "storyboard_role": {"enum": ["design_board", "video_storyboard"]}
+  }
+}

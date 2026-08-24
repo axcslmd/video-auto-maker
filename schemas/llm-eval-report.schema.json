@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "llm-eval-report.schema.json",
+  "title": "Business LLM qualification report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "model_id", "case_count", "metrics", "thresholds", "qualified", "failures"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "model_id": {"type": "string", "minLength": 1},
+    "case_count": {"type": "integer", "minimum": 30},
+    "metrics": {"type": "object"},
+    "thresholds": {"type": "object"},
+    "qualified": {"type": "boolean"},
+    "failures": {"type": "array", "items": {"type": "string"}}
+  }
+}

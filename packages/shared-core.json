@@ -1,0 +1,24 @@
+{
+  "id": "shared-core",
+  "display_name": "共享底座",
+  "sales_status": "included_with_any_package",
+  "commands": [
+    "/video-auto-maker",
+    "/setup",
+    "/asset-prep",
+    "/brand-kit",
+    "/digital-human",
+    "/text-anim"
+  ],
+  "capabilities": [
+    "环境自检与 inline bootstrap",
+    "BasicRouter 会话密钥 gate",
+    "客户 client 隔离",
+    "素材导入与 brief",
+    "品牌包",
+    "数字人形象库",
+    "gpt-image-2 人物板/产品板/故事板确认",
+    "视频生成、OCR、QC、字幕/动效、本地合成",
+    "交付清单和 workflow canvas"
+  ]
+}

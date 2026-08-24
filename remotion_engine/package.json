@@ -1,0 +1,30 @@
+{
+  "name": "remotion-engine",
+  "version": "1.1.0",
+  "private": true,
+  "description": "运镜/内容编排引擎（Remotion）——项目自有内容组件驱动数字人讲解、产品展示与 PPT 内容动效。",
+  "license": "SEE LICENSE IN ../LICENSE",
+  "scripts": {
+    "render": "remotion render",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@react-three/fiber": "9.3.0",
+    "@remotion/cli": "4.0.509",
+    "@remotion/lottie": "4.0.509",
+    "@remotion/motion-blur": "4.0.509",
+    "@remotion/rive": "4.0.509",
+    "@remotion/three": "4.0.509",
+    "@remotion/transitions": "4.0.509",
+    "lottie-web": "5.13.0",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "remotion": "4.0.509",
+    "three": "0.179.1"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "typescript": "^5.9.3"
+  }
+}

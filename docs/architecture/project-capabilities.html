@@ -1,0 +1,961 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="AI 营销数字员工项目能力介绍：从创意、脚本、素材和故事板到数字人视频与营销内容交付。">
+  <title>AI 营销数字员工｜项目能力介绍</title>
+  <style>
+    :root {
+      --ink: #172229;
+      --muted: #647077;
+      --paper: #f3f0e8;
+      --card: #fffdf7;
+      --line: rgba(23, 34, 41, 0.13);
+      --orange: #ee5d2a;
+      --orange-dark: #be3d17;
+      --teal: #167b75;
+      --lime: #dbe85d;
+      --navy: #142f3a;
+      --shadow: 0 24px 70px rgba(28, 42, 46, 0.12);
+      --radius: 24px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 7% 10%, rgba(238, 93, 42, 0.12), transparent 30rem),
+        radial-gradient(circle at 96% 22%, rgba(22, 123, 117, 0.11), transparent 34rem),
+        var(--paper);
+      font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", system-ui, sans-serif;
+      line-height: 1.65;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    .wrap { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 16px;
+      color: var(--teal);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before { content: ""; width: 24px; height: 3px; background: currentColor; border-radius: 9px; }
+    .display {
+      margin: 0;
+      font-family: "Songti SC", "STSong", "Noto Serif CJK SC", serif;
+      font-weight: 800;
+      letter-spacing: -0.035em;
+      line-height: 1.08;
+    }
+    .section-head { max-width: 780px; margin-bottom: 42px; }
+    .section-head h2 { font-size: clamp(34px, 5vw, 62px); }
+    .section-head p { max-width: 680px; margin: 18px 0 0; color: var(--muted); font-size: 17px; }
+    section { padding: 104px 0; }
+
+    .nav-shell {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      padding: 14px 0;
+      backdrop-filter: blur(18px);
+      background: rgba(243, 240, 232, 0.82);
+      border-bottom: 1px solid rgba(23, 34, 41, 0.08);
+    }
+    nav { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: flex; align-items: center; gap: 11px; font-weight: 900; }
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 36px;
+      height: 36px;
+      color: white;
+      background: var(--orange);
+      border-radius: 50% 50% 50% 12px;
+      font-size: 12px;
+      box-shadow: 0 8px 24px rgba(238, 93, 42, 0.3);
+    }
+    .nav-links { display: flex; align-items: center; gap: 26px; color: #465259; font-size: 14px; font-weight: 700; }
+    .nav-links a:hover { color: var(--orange); }
+    .nav-cta { padding: 10px 16px; color: white !important; background: var(--ink); border-radius: 999px; }
+
+    .hero { min-height: 760px; padding: 98px 0 82px; overflow: hidden; }
+    .hero-grid { display: grid; grid-template-columns: 1.12fr 0.88fr; gap: 64px; align-items: center; }
+    .hero h1 { max-width: 760px; font-size: clamp(52px, 7.4vw, 102px); }
+    .hero h1 span { color: var(--orange); }
+    .hero-copy { max-width: 650px; margin: 28px 0 0; color: #526067; font-size: clamp(18px, 2vw, 22px); }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      min-height: 50px;
+      padding: 0 22px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-weight: 800;
+      transition: transform 180ms ease, box-shadow 180ms ease;
+    }
+    .button:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(23, 34, 41, 0.12); }
+    .button.primary { color: white; background: var(--orange); border-color: var(--orange); }
+    .button.secondary { background: rgba(255, 253, 247, 0.72); }
+    .hero-note { margin-top: 28px; color: var(--muted); font-size: 13px; }
+
+    .hero-visual { position: relative; min-height: 560px; }
+    .poster {
+      position: absolute;
+      inset: 18px 34px 52px 26px;
+      overflow: hidden;
+      color: white;
+      background: var(--navy);
+      border: 1px solid rgba(255,255,255,0.13);
+      border-radius: 180px 24px 180px 24px;
+      box-shadow: var(--shadow);
+    }
+    .poster::before {
+      content: "";
+      position: absolute;
+      width: 360px;
+      height: 360px;
+      top: -90px;
+      right: -90px;
+      border: 70px solid var(--lime);
+      border-radius: 50%;
+      opacity: 0.88;
+    }
+    .poster::after {
+      content: "";
+      position: absolute;
+      width: 420px;
+      height: 160px;
+      left: -100px;
+      bottom: 40px;
+      background: var(--orange);
+      transform: rotate(-12deg);
+      border-radius: 50%;
+    }
+    .poster-content { position: relative; z-index: 2; display: flex; height: 100%; padding: 62px 42px 48px; flex-direction: column; justify-content: space-between; }
+    .poster-label { font-size: 12px; font-weight: 800; letter-spacing: 0.18em; opacity: 0.68; }
+    .poster-title { max-width: 310px; margin: 0; font-family: "Songti SC", serif; font-size: clamp(42px, 5vw, 68px); line-height: 1.08; }
+    .poster-flow { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 10px; font-size: 13px; font-weight: 800; }
+    .poster-flow div { padding: 14px; text-align: center; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.14); border-radius: 14px; }
+    .float-card {
+      position: absolute;
+      z-index: 4;
+      padding: 15px 18px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: 0 16px 45px rgba(25, 42, 48, 0.17);
+      font-size: 13px;
+      font-weight: 800;
+    }
+    .float-card strong { display: block; color: var(--orange); font-family: Georgia, serif; font-size: 26px; line-height: 1; }
+    .float-one { top: 2px; right: 0; transform: rotate(5deg); }
+    .float-two { left: 0; bottom: 8px; transform: rotate(-4deg); }
+
+    .promise-bar { padding: 0 0 32px; }
+    .promise-inner {
+      display: grid;
+      grid-template-columns: 1.15fr repeat(3, 1fr);
+      overflow: hidden;
+      background: var(--ink);
+      color: white;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .promise-item { min-height: 154px; padding: 30px; border-left: 1px solid rgba(255,255,255,0.12); }
+    .promise-item:first-child { border-left: 0; background: var(--orange); }
+    .promise-item b { display: block; margin-bottom: 7px; font-size: 18px; }
+    .promise-item p { margin: 0; color: rgba(255,255,255,0.68); font-size: 14px; }
+    .promise-item:first-child p { color: rgba(255,255,255,0.85); }
+
+    .capabilities { padding-top: 116px; }
+    .cap-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 18px; }
+    .cap-card {
+      position: relative;
+      grid-column: span 4;
+      min-height: 300px;
+      padding: 28px;
+      overflow: hidden;
+      background: rgba(255, 253, 247, 0.8);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      transition: transform 180ms ease, background 180ms ease, box-shadow 180ms ease;
+    }
+    .cap-card:hover { transform: translateY(-5px); background: var(--card); box-shadow: 0 20px 50px rgba(25, 42, 48, 0.1); }
+    .cap-card.wide { grid-column: span 6; }
+    .cap-index { color: var(--orange); font-family: Georgia, serif; font-size: 14px; font-weight: 800; }
+    .cap-icon { display: grid; place-items: center; width: 55px; height: 55px; margin: 40px 0 22px; color: white; background: var(--teal); border-radius: 17px 17px 6px 17px; font-size: 25px; }
+    .cap-card:nth-child(3n + 2) .cap-icon { background: var(--orange); }
+    .cap-card:nth-child(3n) .cap-icon { color: var(--ink); background: var(--lime); }
+    .cap-card h3 { margin: 0 0 10px; font-family: "Songti SC", serif; font-size: 27px; line-height: 1.2; }
+    .cap-card p { margin: 0; color: var(--muted); font-size: 15px; }
+
+    .scenes { color: white; background: var(--navy); }
+    .scenes .eyebrow { color: var(--lime); }
+    .scenes .section-head p { color: rgba(255,255,255,0.64); }
+    .scene-tabs { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 28px; }
+    .scene-tab {
+      padding: 10px 16px;
+      color: rgba(255,255,255,0.7);
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.16);
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 700;
+    }
+    .scene-tab.active { color: var(--ink); background: var(--lime); border-color: var(--lime); }
+    .scene-panel {
+      display: grid;
+      grid-template-columns: 0.82fr 1.18fr;
+      gap: 18px;
+      min-height: 420px;
+    }
+    .scene-info, .scene-board { padding: clamp(28px, 4vw, 52px); border-radius: var(--radius); }
+    .scene-info { display: flex; flex-direction: column; justify-content: space-between; background: var(--orange); }
+    .scene-info h3 { margin: 0 0 16px; font-family: "Songti SC", serif; font-size: clamp(35px, 5vw, 58px); line-height: 1.08; }
+    .scene-info p { max-width: 440px; margin: 0; color: rgba(255,255,255,0.82); }
+    .scene-chip { align-self: flex-start; padding: 7px 11px; color: var(--ink); background: var(--lime); border-radius: 999px; font-size: 12px; font-weight: 900; }
+    .scene-board { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); }
+    .scene-feature { padding: 23px; background: rgba(255,255,255,0.055); border-radius: 18px; }
+    .scene-feature b { display: block; margin-bottom: 8px; color: var(--lime); font-size: 16px; }
+    .scene-feature span { color: rgba(255,255,255,0.66); font-size: 14px; }
+
+    .technology { position: relative; overflow: hidden; background: #e9e5da; }
+    .technology::before {
+      content: "";
+      position: absolute;
+      width: 560px;
+      height: 560px;
+      right: -240px;
+      top: -250px;
+      border: 90px solid rgba(22, 123, 117, 0.08);
+      border-radius: 50%;
+    }
+    .tech-flow {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      margin-bottom: 20px;
+      overflow: hidden;
+      color: white;
+      background: var(--ink);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .tech-stage { position: relative; min-height: 160px; padding: 25px 22px; border-left: 1px solid rgba(255,255,255,0.12); }
+    .tech-stage:first-child { border-left: 0; }
+    .tech-stage::after { content: "→"; position: absolute; z-index: 2; right: -10px; top: 24px; color: var(--lime); font-weight: 900; }
+    .tech-stage:last-child::after { display: none; }
+    .tech-stage small { display: block; margin-bottom: 26px; color: var(--lime); font: 800 12px/1 Georgia, serif; letter-spacing: 0.12em; }
+    .tech-stage b { display: block; margin-bottom: 6px; font-size: 17px; }
+    .tech-stage span { display: block; color: rgba(255,255,255,0.58); font-size: 13px; line-height: 1.5; }
+    .tech-grid { position: relative; z-index: 2; display: grid; grid-template-columns: repeat(12, 1fr); gap: 14px; }
+    .tech-card {
+      grid-column: span 4;
+      min-height: 260px;
+      padding: 26px;
+      background: rgba(255, 253, 247, 0.86);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+    }
+    .tech-card.featured { grid-column: span 6; color: white; background: var(--teal); border-color: transparent; }
+    .tech-card.featured.alt { background: var(--orange); }
+    .tech-name { display: flex; align-items: center; justify-content: space-between; gap: 18px; margin-bottom: 54px; }
+    .tech-name span { color: var(--orange); font: 800 12px/1 Georgia, serif; letter-spacing: 0.1em; }
+    .tech-card.featured .tech-name span { color: var(--lime); }
+    .tech-badge { padding: 7px 10px; color: var(--muted); background: rgba(23,34,41,0.06); border-radius: 999px; font-size: 11px; font-weight: 800; }
+    .tech-card.featured .tech-badge { color: white; background: rgba(255,255,255,0.14); }
+    .tech-card h3 { margin: 0 0 10px; font-family: "Songti SC", serif; font-size: 25px; line-height: 1.2; }
+    .tech-card p { margin: 0; color: var(--muted); font-size: 14px; }
+    .tech-card.featured p { color: rgba(255,255,255,0.75); }
+    .tech-footnote { position: relative; z-index: 2; margin: 22px 0 0; color: var(--muted); font-size: 13px; }
+
+    .workflow { position: relative; overflow: hidden; }
+    .workflow::after {
+      content: "FLOW";
+      position: absolute;
+      right: -30px;
+      top: 40px;
+      color: rgba(23, 34, 41, 0.035);
+      font: 900 190px/1 Georgia, serif;
+      pointer-events: none;
+    }
+    .steps { position: relative; z-index: 2; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .step { min-height: 252px; padding: 26px; border-top: 5px solid var(--ink); background: var(--card); box-shadow: 0 10px 35px rgba(24, 39, 44, 0.06); }
+    .step:nth-child(2), .step:nth-child(5) { border-color: var(--orange); transform: translateY(20px); }
+    .step:nth-child(3), .step:nth-child(6) { border-color: var(--teal); }
+    .step-no { display: flex; align-items: center; justify-content: space-between; color: var(--muted); font-size: 13px; font-weight: 900; letter-spacing: 0.12em; }
+    .step-no i { width: 9px; height: 9px; background: var(--lime); border-radius: 50%; }
+    .step h3 { margin: 45px 0 10px; font-family: "Songti SC", serif; font-size: 25px; }
+    .step p { margin: 0; color: var(--muted); font-size: 14px; }
+
+    .quality { padding: 112px 0; color: white; background: var(--orange); }
+    .quality-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 72px; align-items: center; }
+    .quality h2 { font-size: clamp(42px, 6vw, 76px); }
+    .quality-copy > p { max-width: 560px; color: rgba(255,255,255,0.82); font-size: 18px; }
+    .quality-list { display: grid; gap: 12px; }
+    .quality-item { display: grid; grid-template-columns: auto 1fr; gap: 16px; padding: 20px; background: rgba(105, 22, 7, 0.18); border: 1px solid rgba(255,255,255,0.18); border-radius: 18px; }
+    .check { display: grid; place-items: center; width: 28px; height: 28px; color: var(--orange-dark); background: var(--lime); border-radius: 50%; font-weight: 900; }
+    .quality-item b { display: block; margin-bottom: 2px; }
+    .quality-item span { color: rgba(255,255,255,0.72); font-size: 14px; }
+
+    .deliverables { padding-bottom: 70px; }
+    .deliverable-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .deliverable { padding: 26px 22px; background: var(--card); border: 1px solid var(--line); border-radius: 18px; }
+    .deliverable small { color: var(--orange); font-weight: 900; letter-spacing: 0.1em; }
+    .deliverable h3 { margin: 18px 0 8px; font-size: 19px; }
+    .deliverable p { margin: 0; color: var(--muted); font-size: 14px; }
+
+    .closing { padding: 70px 0 30px; }
+    .closing-card {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(38px, 7vw, 78px);
+      color: white;
+      background: var(--ink);
+      border-radius: 36px;
+      box-shadow: var(--shadow);
+    }
+    .closing-card::after { content: ""; position: absolute; width: 300px; height: 300px; right: -90px; top: -90px; border: 55px solid var(--teal); border-radius: 50%; }
+    .closing-card h2 { position: relative; z-index: 2; max-width: 820px; font-size: clamp(40px, 6vw, 74px); }
+    .closing-card p { position: relative; z-index: 2; max-width: 650px; color: rgba(255,255,255,0.65); font-size: 17px; }
+    .closing-card .button { position: relative; z-index: 2; margin-top: 20px; }
+    footer { display: flex; justify-content: space-between; gap: 20px; padding: 34px 0 42px; color: var(--muted); font-size: 13px; }
+
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 600ms ease, transform 600ms ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 920px) {
+      .nav-links a:not(.nav-cta) { display: none; }
+      .hero-grid, .quality-grid { grid-template-columns: 1fr; }
+      .hero { padding-top: 70px; }
+      .hero-visual { min-height: 500px; }
+      .promise-inner { grid-template-columns: repeat(2, 1fr); }
+      .promise-item:nth-child(3) { border-left: 0; border-top: 1px solid rgba(255,255,255,0.12); }
+      .promise-item:nth-child(4) { border-top: 1px solid rgba(255,255,255,0.12); }
+      .cap-card, .cap-card.wide { grid-column: span 6; }
+      .scene-panel { grid-template-columns: 1fr; }
+      .tech-flow { grid-template-columns: repeat(5, minmax(180px, 1fr)); overflow-x: auto; }
+      .tech-card { grid-column: span 6; }
+      .steps { grid-template-columns: repeat(2, 1fr); }
+      .step:nth-child(2), .step:nth-child(5) { transform: none; }
+      .deliverable-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 620px) {
+      .wrap { width: min(100% - 24px, 1180px); }
+      section { padding: 76px 0; }
+      .brand span:last-child { font-size: 14px; }
+      .nav-cta { padding: 9px 13px; }
+      .hero { min-height: auto; padding-top: 58px; }
+      .hero h1 { font-size: clamp(48px, 15vw, 68px); }
+      .hero-copy { font-size: 17px; }
+      .hero-visual { min-height: 430px; }
+      .poster { inset: 24px 10px 48px 8px; border-radius: 120px 20px 120px 20px; }
+      .poster-content { padding: 52px 26px 34px; }
+      .poster-title { font-size: 42px; }
+      .float-one { right: 0; }
+      .float-two { left: 2px; }
+      .promise-inner { grid-template-columns: 1fr; }
+      .promise-item { min-height: auto; border-left: 0; border-top: 1px solid rgba(255,255,255,0.12); }
+      .cap-grid { display: block; }
+      .cap-card { min-height: 0; margin-bottom: 14px; }
+      .cap-icon { margin-top: 28px; }
+      .scene-tabs { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 5px; }
+      .scene-tab { flex: 0 0 auto; }
+      .scene-board, .steps, .deliverable-grid { grid-template-columns: 1fr; }
+      .scene-panel { min-height: auto; }
+      .scene-info { min-height: 340px; }
+      .tech-grid { display: block; }
+      .tech-card, .tech-card.featured { min-height: 0; margin-bottom: 12px; }
+      .tech-name { margin-bottom: 34px; }
+      .step { min-height: 220px; }
+      footer { flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .button, .cap-card { transition: none; }
+    }
+
+    /* Futuristic visual system */
+    :root {
+      --ink: #eaf7ff;
+      --muted: #8ca6b7;
+      --paper: #050912;
+      --card: rgba(12, 22, 38, 0.76);
+      --line: rgba(111, 228, 255, 0.16);
+      --orange: #7c5cff;
+      --orange-dark: #5333d7;
+      --teal: #00d9ff;
+      --lime: #7dffca;
+      --navy: #07101f;
+      --shadow: 0 30px 90px rgba(0, 0, 0, 0.42), 0 0 45px rgba(0, 217, 255, 0.07);
+    }
+
+    body {
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 13% 7%, rgba(124, 92, 255, 0.19), transparent 32rem),
+        radial-gradient(circle at 88% 24%, rgba(0, 217, 255, 0.13), transparent 38rem),
+        radial-gradient(circle at 48% 78%, rgba(0, 255, 178, 0.06), transparent 35rem),
+        #050912;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      z-index: -1;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(117, 218, 255, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(117, 218, 255, 0.035) 1px, transparent 1px);
+      background-size: 64px 64px;
+      mask-image: linear-gradient(to bottom, black, transparent 92%);
+    }
+
+    .nav-shell {
+      background: rgba(5, 9, 18, 0.72);
+      border-bottom-color: rgba(111, 228, 255, 0.11);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.18);
+    }
+    .brand-mark {
+      color: #031018;
+      background: linear-gradient(135deg, var(--lime), var(--teal));
+      border-radius: 10px 10px 3px 10px;
+      box-shadow: 0 0 26px rgba(0, 217, 255, 0.38);
+    }
+    .nav-links { color: #95abba; }
+    .nav-links a:hover { color: var(--teal); text-shadow: 0 0 18px rgba(0,217,255,0.55); }
+    .nav-cta {
+      color: #031018 !important;
+      background: linear-gradient(110deg, var(--teal), var(--lime));
+      box-shadow: 0 0 22px rgba(0, 217, 255, 0.2);
+    }
+
+    .eyebrow { color: var(--teal); text-shadow: 0 0 20px rgba(0,217,255,0.4); }
+    .hero { position: relative; }
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      left: -180px;
+      top: 20px;
+      border: 1px solid rgba(0,217,255,0.16);
+      border-radius: 50%;
+      box-shadow: inset 0 0 90px rgba(0,217,255,0.06), 0 0 80px rgba(124,92,255,0.08);
+      animation: techOrbit 16s linear infinite;
+    }
+    .hero h1 {
+      color: #f2faff;
+      text-shadow: 0 10px 45px rgba(0,0,0,0.48);
+    }
+    .hero h1 span {
+      color: transparent;
+      background: linear-gradient(100deg, var(--teal), var(--lime) 48%, #a984ff);
+      background-clip: text;
+      -webkit-background-clip: text;
+      filter: drop-shadow(0 0 24px rgba(0,217,255,0.2));
+    }
+    .hero-copy { color: #9db3c2; }
+    .button { border-color: rgba(111,228,255,0.2); }
+    .button.primary {
+      color: #041019;
+      background: linear-gradient(110deg, var(--teal), var(--lime));
+      border-color: transparent;
+      box-shadow: 0 0 30px rgba(0,217,255,0.22);
+    }
+    .button.secondary { color: #ddecf5; background: rgba(12,22,38,0.58); backdrop-filter: blur(12px); }
+    .button:hover { box-shadow: 0 0 35px rgba(0,217,255,0.24); }
+
+    .poster {
+      background:
+        linear-gradient(140deg, rgba(12,28,48,0.96), rgba(6,13,27,0.98)),
+        var(--navy);
+      border-color: rgba(111,228,255,0.24);
+      border-radius: 150px 22px 150px 22px;
+      box-shadow: 0 35px 100px rgba(0,0,0,0.5), inset 0 0 70px rgba(0,217,255,0.05), 0 0 50px rgba(124,92,255,0.12);
+    }
+    .poster::before { border-color: var(--teal); opacity: 0.45; box-shadow: 0 0 55px rgba(0,217,255,0.25); }
+    .poster::after { background: linear-gradient(90deg, #5f3cff, #a855f7); opacity: 0.75; box-shadow: 0 0 55px rgba(124,92,255,0.35); }
+    .poster-content::before {
+      content: "";
+      position: absolute;
+      inset: 20px;
+      border: 1px solid rgba(125,255,202,0.12);
+      border-radius: inherit;
+      pointer-events: none;
+    }
+    .poster-flow div { background: rgba(0,217,255,0.07); border-color: rgba(111,228,255,0.18); }
+    .float-card {
+      color: #dff7ff;
+      background: rgba(10,20,36,0.82);
+      border-color: rgba(111,228,255,0.24);
+      backdrop-filter: blur(16px);
+      box-shadow: 0 18px 55px rgba(0,0,0,0.4), inset 0 0 24px rgba(0,217,255,0.05);
+    }
+    .float-card strong { color: var(--lime); text-shadow: 0 0 18px rgba(125,255,202,0.35); }
+
+    .promise-inner { background: rgba(8,16,29,0.9); border: 1px solid var(--line); }
+    .promise-item { border-color: rgba(111,228,255,0.1); }
+    .promise-item:first-child { background: linear-gradient(145deg, #5939d6, #156b91); }
+
+    .cap-card, .deliverable, .step, .tech-card {
+      background: linear-gradient(145deg, rgba(15,27,46,0.88), rgba(8,15,28,0.88));
+      border-color: rgba(111,228,255,0.14);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.025);
+      backdrop-filter: blur(14px);
+    }
+    .cap-card::after, .tech-card::after {
+      content: "";
+      position: absolute;
+      width: 90px;
+      height: 1px;
+      right: 24px;
+      top: 24px;
+      background: linear-gradient(90deg, transparent, var(--teal));
+      opacity: 0.55;
+    }
+    .cap-card:hover {
+      background: linear-gradient(145deg, rgba(17,34,57,0.98), rgba(9,18,33,0.98));
+      border-color: rgba(0,217,255,0.38);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.28), 0 0 32px rgba(0,217,255,0.08);
+    }
+    .cap-index, .tech-name span, .deliverable small { color: var(--teal); }
+    .cap-icon { color: #031018; background: linear-gradient(135deg, var(--teal), var(--lime)); box-shadow: 0 0 24px rgba(0,217,255,0.18); }
+    .cap-card:nth-child(3n + 2) .cap-icon { color: white; background: linear-gradient(135deg, #7657ff, #b455f4); }
+    .cap-card:nth-child(3n) .cap-icon { background: linear-gradient(135deg, var(--lime), #58bfff); }
+
+    .scenes { background: linear-gradient(180deg, #07101f, #071322 65%, #050912); }
+    .scene-tab { color: #91a9b8; border-color: rgba(111,228,255,0.16); }
+    .scene-tab.active { color: #031018; background: linear-gradient(100deg, var(--teal), var(--lime)); border-color: transparent; box-shadow: 0 0 24px rgba(0,217,255,0.2); }
+    .scene-info { background: linear-gradient(145deg, #6040df, #0a92ba); box-shadow: inset 0 1px 0 rgba(255,255,255,0.2), 0 25px 70px rgba(0,0,0,0.25); }
+    .scene-board { background: rgba(10,21,37,0.8); border-color: rgba(111,228,255,0.15); }
+    .scene-feature { background: linear-gradient(145deg, rgba(20,37,59,0.8), rgba(10,20,35,0.8)); border: 1px solid rgba(111,228,255,0.08); }
+
+    .technology { background: linear-gradient(180deg, #050912, #081220 50%, #050912); }
+    .technology::before { border-color: rgba(0,217,255,0.08); }
+    .tech-flow { background: rgba(8,17,31,0.92); border: 1px solid rgba(111,228,255,0.16); }
+    .tech-stage { border-color: rgba(111,228,255,0.11); }
+    .tech-card { position: relative; }
+    .tech-card.featured { background: linear-gradient(135deg, rgba(0,126,160,0.88), rgba(30,53,103,0.92)); border-color: rgba(0,217,255,0.2); }
+    .tech-card.featured.alt { background: linear-gradient(135deg, rgba(91,57,210,0.9), rgba(126,45,157,0.86)); border-color: rgba(175,117,255,0.24); }
+    .tech-badge { color: #9db3c2; background: rgba(111,228,255,0.07); }
+
+    .workflow::after { color: rgba(0,217,255,0.025); }
+    .step { border-top-color: var(--teal); }
+    .step:nth-child(2), .step:nth-child(5) { border-color: #7c5cff; }
+    .step:nth-child(3), .step:nth-child(6) { border-color: var(--lime); }
+    .quality { background: linear-gradient(135deg, #341b83, #075a79 58%, #08756b); }
+    .quality-item { background: rgba(4,14,26,0.3); border-color: rgba(149,236,255,0.16); backdrop-filter: blur(12px); }
+    .check { color: #031018; background: var(--lime); box-shadow: 0 0 18px rgba(125,255,202,0.3); }
+    .closing-card { background: linear-gradient(135deg, #0a1729, #10142e); border: 1px solid rgba(111,228,255,0.2); }
+    .closing-card::after { border-color: var(--teal); opacity: 0.45; box-shadow: 0 0 70px rgba(0,217,255,0.16); }
+
+    @keyframes techOrbit {
+      from { transform: rotate(0deg) scale(1); }
+      50% { transform: rotate(180deg) scale(1.08); }
+      to { transform: rotate(360deg) scale(1); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero::before { animation: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav-shell">
+    <nav class="wrap" aria-label="主导航">
+      <a class="brand" href="#top">
+        <span class="brand-mark">AI</span>
+        <span>营销数字员工</span>
+      </a>
+      <div class="nav-links">
+        <a href="#capabilities">核心能力</a>
+        <a href="#scenes">应用场景</a>
+        <a href="#technology">技术底座</a>
+        <a href="#workflow">协作流程</a>
+        <a class="nav-cta" href="#start">了解完整方案</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <span class="eyebrow">AI Marketing Creative Partner</span>
+          <h1 class="display">让一个想法，<br>长成一支<span>好片。</span></h1>
+          <p class="hero-copy">从需求梳理、营销脚本、数字人形象到产品故事板、视频生成与后期包装，一位能与你共创、把关并持续交付的 AI 营销数字员工。</p>
+          <div class="hero-actions">
+            <a class="button primary" href="#capabilities">查看项目能力 <span aria-hidden="true">↘</span></a>
+            <a class="button secondary" href="#workflow">了解创作流程</a>
+          </div>
+          <p class="hero-note">适用于品牌市场团队、内容团队、代理商与中小企业。</p>
+        </div>
+        <div class="hero-visual" aria-label="从创意到成片的视觉示意">
+          <div class="poster">
+            <div class="poster-content">
+              <span class="poster-label">CREATIVE TO DELIVERY</span>
+              <h2 class="poster-title">想清楚<br>看得见<br>再出片</h2>
+              <div class="poster-flow">
+                <div>品牌想法</div><span>→</span><div>营销成片</div>
+              </div>
+            </div>
+          </div>
+          <div class="float-card float-one"><strong>12</strong>格电影级故事板</div>
+          <div class="float-card float-two"><strong>1-ON-1</strong>顾问式共创</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="promise-bar">
+      <div class="wrap promise-inner reveal">
+        <div class="promise-item">
+          <b>不是工具堆砌</b>
+          <p>而是一条从想法到交付的完整营销内容生产线。</p>
+        </div>
+        <div class="promise-item">
+          <b>以真实素材为锚</b>
+          <p>围绕客户产品、品牌资料和人物资产展开创作。</p>
+        </div>
+        <div class="promise-item">
+          <b>关键节点先确认</b>
+          <p>脚本、形象、产品板和故事板确认后再进入生成。</p>
+        </div>
+        <div class="promise-item">
+          <b>一套内容多场景</b>
+          <p>适配横版、竖版、社媒快剪、讲解和广告等用途。</p>
+        </div>
+      </div>
+    </div>
+
+    <section class="capabilities" id="capabilities">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="eyebrow">What It Can Do</span>
+          <h2 class="display">从策略到画面，<br>把营销内容做完整。</h2>
+          <p>项目覆盖营销视频最费精力的关键环节，让团队不再在创意、素材、制作和返工之间反复切换。</p>
+        </div>
+        <div class="cap-grid">
+          <article class="cap-card wide reveal">
+            <span class="cap-index">01 / CONSULTING</span>
+            <div class="cap-icon" aria-hidden="true">✦</div>
+            <h3>顾问式需求共创</h3>
+            <p>把一句模糊想法逐步梳理成清晰的传播目标、受众洞察、核心卖点、内容结构和行动引导，并主动补足 Brief 中缺失的关键信息。</p>
+          </article>
+          <article class="cap-card wide reveal">
+            <span class="cap-index">02 / SCRIPT</span>
+            <div class="cap-icon" aria-hidden="true">文</div>
+            <h3>营销脚本与专业分镜</h3>
+            <p>创作口播台词、情绪节奏、镜头动作和视听表达，让信息不只是“说清楚”，更能被看见、理解和记住。</p>
+          </article>
+          <article class="cap-card reveal">
+            <span class="cap-index">03 / DIGITAL HUMAN</span>
+            <div class="cap-icon" aria-hidden="true">人</div>
+            <h3>真人数字人</h3>
+            <p>按品牌调性设计人物形象、服装、表情与声音，支持稳定复用，完成自然口型和真人出镜表达。</p>
+          </article>
+          <article class="cap-card reveal">
+            <span class="cap-index">04 / ASSETS</span>
+            <div class="cap-icon" aria-hidden="true">图</div>
+            <h3>素材理解与补齐</h3>
+            <p>理解产品图、文档、演示资料和参考视频，盘点镜位缺口，并围绕真实素材补充场景图与细节图。</p>
+          </article>
+          <article class="cap-card reveal">
+            <span class="cap-index">05 / CONSISTENCY</span>
+            <div class="cap-icon" aria-hidden="true">锁</div>
+            <h3>人物与产品一致性</h3>
+            <p>通过人物参考板、产品多角度板和使用细节图，尽量保持人物身份、产品外观及场景关系稳定。</p>
+          </article>
+          <article class="cap-card reveal">
+            <span class="cap-index">06 / STORYBOARD</span>
+            <div class="cap-icon" aria-hidden="true">镜</div>
+            <h3>可视化故事板预演</h3>
+            <p>正式出片前先展示完整镜头构图、人物动作、产品表达和故事顺序，让修改发生在成本更低的阶段。</p>
+          </article>
+          <article class="cap-card reveal">
+            <span class="cap-index">07 / MOTION</span>
+            <div class="cap-icon" aria-hidden="true">动</div>
+            <h3>字幕与动态包装</h3>
+            <p>提供中文字幕、数据卡片、参数标签、标题快闪和品牌视觉包装，增强信息层级与观看节奏。</p>
+          </article>
+          <article class="cap-card reveal">
+            <span class="cap-index">08 / DELIVERY</span>
+            <div class="cap-icon" aria-hidden="true">片</div>
+            <h3>成片剪辑与质量把关</h3>
+            <p>完成多段拼接、镜头衔接、画中画、字幕合成和异常文字检测，减少低级错误进入最终交付。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="scenes" id="scenes">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="eyebrow">Use Cases</span>
+          <h2 class="display">一套能力，覆盖多种营销任务。</h2>
+          <p>从日常社媒内容到正式品牌表达，可根据传播目标、素材条件与预算选择合适的创作方式。</p>
+        </div>
+        <div class="scene-tabs" role="tablist" aria-label="应用场景">
+          <button class="scene-tab active" type="button" data-scene="broadcast" role="tab" aria-selected="true">数字人口播</button>
+          <button class="scene-tab" type="button" data-scene="product" role="tab" aria-selected="false">产品营销</button>
+          <button class="scene-tab" type="button" data-scene="service" role="tab" aria-selected="false">服务讲解</button>
+          <button class="scene-tab" type="button" data-scene="brand" role="tab" aria-selected="false">品牌广告</button>
+          <button class="scene-tab" type="button" data-scene="social" role="tab" aria-selected="false">社媒快剪</button>
+        </div>
+        <div class="scene-panel reveal" id="scenePanel">
+          <div class="scene-info">
+            <span class="scene-chip" id="sceneChip">高频内容生产</span>
+            <div>
+              <h3 id="sceneTitle">数字人口播</h3>
+              <p id="sceneDescription">让稳定的品牌人物持续出镜，完成普通话、粤语、知识分享、活动通知和销售讲解等内容。</p>
+            </div>
+          </div>
+          <div class="scene-board" id="sceneFeatures">
+            <div class="scene-feature"><b>真人形象设计</b><span>围绕职业、年龄、气质与品牌调性建立数字人。</span></div>
+            <div class="scene-feature"><b>自然音画表达</b><span>台词、语气、表情和口型在同一条内容中协同呈现。</span></div>
+            <div class="scene-feature"><b>系列化复用</b><span>同一人物可持续用于栏目、课程和日常社媒内容。</span></div>
+            <div class="scene-feature"><b>横竖版适配</b><span>可面向企业展示、短视频平台和内部传播输出。</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="technology" id="technology">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="eyebrow">Technology Stack</span>
+          <h2 class="display">专业模型负责创造，<br>确定性技术负责交付。</h2>
+          <p>项目不是依赖单一模型完成所有工作，而是让不同技术各司其职：AI 负责理解与生成，本地渲染负责精确编排，质量工具负责最后把关。</p>
+        </div>
+
+        <div class="tech-flow reveal" aria-label="项目技术链路">
+          <div class="tech-stage"><small>01</small><b>智能理解</b><span>需求、图片、文档与品牌资料</span></div>
+          <div class="tech-stage"><small>02</small><b>视觉生成</b><span>产品板、人物板与故事板</span></div>
+          <div class="tech-stage"><small>03</small><b>视频生成</b><span>数字人、口型、动作与场景</span></div>
+          <div class="tech-stage"><small>04</small><b>动态后期</b><span>运镜、字幕、动效与合成</span></div>
+          <div class="tech-stage"><small>05</small><b>质量检测</b><span>文字、画面与交付完整性</span></div>
+        </div>
+
+        <div class="tech-grid">
+          <article class="tech-card featured reveal">
+            <div class="tech-name"><span>AI ORCHESTRATION</span><i class="tech-badge">统一模型接入</i></div>
+            <h3>BasicRouter 多模型智能路由</h3>
+            <p>统一连接图像理解、图片生成和视频生成能力，并根据任务类型与模型可用性选择合适方案，让生产流程更稳定、更灵活。</p>
+          </article>
+          <article class="tech-card featured alt reveal">
+            <div class="tech-name"><span>GENERATIVE VIDEO</span><i class="tech-badge">音画一体</i></div>
+            <h3>Seedance · Kling · Wan</h3>
+            <p>用于数字人、产品演示与场景视频生成，支持参考图锚定、多图协同、自然动作、配音口型和跨片段连续表达。</p>
+          </article>
+          <article class="tech-card reveal">
+            <div class="tech-name"><span>VISUAL AI</span><i class="tech-badge">gpt-image-2</i></div>
+            <h3>视觉理解与故事板生成</h3>
+            <p>理解产品图片和品牌素材，并生成产品多角度板、人物六视图、使用细节图及电影级动态格数故事板。</p>
+          </article>
+          <article class="tech-card reveal">
+            <div class="tech-name"><span>MOTION SYSTEM</span><i class="tech-badge">Remotion</i></div>
+            <h3>React 视频编排</h3>
+            <p>以可控方式完成镜头运镜、内容页、画中画、章节结构与场景转场，适合讲解型和产品展示型视频。</p>
+          </article>
+          <article class="tech-card reveal">
+            <div class="tech-name"><span>KINETIC TYPE</span><i class="tech-badge">HyperFrames · GSAP</i></div>
+            <h3>商业级字幕与文字动效</h3>
+            <p>使用真实字体制作中文字幕、动态标题、参数标签和数据卡片，并通过透明动效层准确叠加到成片。</p>
+          </article>
+          <article class="tech-card reveal">
+            <div class="tech-name"><span>MEDIA PIPELINE</span><i class="tech-badge">ffmpeg</i></div>
+            <h3>本地剪辑与媒体合成</h3>
+            <p>负责视频拼接、画中画、字幕层、品牌水印和最终编码，让常规后期保持快速、确定且不额外消耗生成额度。</p>
+          </article>
+          <article class="tech-card reveal">
+            <div class="tech-name"><span>QUALITY CONTROL</span><i class="tech-badge">OCR · Vision</i></div>
+            <h3>视觉质检与异常拦截</h3>
+            <p>检查意外字幕、水印、异常文字和透明通道，结合客户确认闸门，避免未经确认或存在明显问题的内容直接交付。</p>
+          </article>
+          <article class="tech-card reveal">
+            <div class="tech-name"><span>OPEN WORKFLOW</span><i class="tech-badge">Multi-Agent</i></div>
+            <h3>多 Agent 协同兼容</h3>
+            <p>核心工作流可在 Kilo、Codex、Hermes 等兼容 Agent 中运行，支持任务恢复与跨宿主协作，不被单一工具绑定。</p>
+          </article>
+        </div>
+        <p class="tech-footnote reveal">技术选型会随任务自动组合。客户看到的是清晰的确认与交付流程，而不是复杂的工具操作。</p>
+      </div>
+    </section>
+
+    <section class="workflow" id="workflow">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="eyebrow">How We Work</span>
+          <h2 class="display">每一步都看得见，<br>每次确认都减少返工。</h2>
+          <p>采用小步共创和阶段确认，不要求客户一次讲清所有需求，也不会在方向未确定时直接消耗生成成本。</p>
+        </div>
+        <div class="steps">
+          <article class="step reveal"><div class="step-no">STEP 01 <i></i></div><h3>理解目标</h3><p>明确品牌、受众、渠道、传播任务与希望用户采取的行动。</p></article>
+          <article class="step reveal"><div class="step-no">STEP 02 <i></i></div><h3>梳理素材</h3><p>读取产品图、品牌资料和文档，识别可用内容与缺失素材。</p></article>
+          <article class="step reveal"><div class="step-no">STEP 03 <i></i></div><h3>共创脚本</h3><p>提炼卖点、结构、台词和画面表达，逐段确认内容方向。</p></article>
+          <article class="step reveal"><div class="step-no">STEP 04 <i></i></div><h3>确认人物与产品</h3><p>先确认数字人形象、产品多角度表现及真实使用关系。</p></article>
+          <article class="step reveal"><div class="step-no">STEP 05 <i></i></div><h3>故事板预演</h3><p>提前查看镜头构图、动作、场景和产品表达，再决定出片。</p></article>
+          <article class="step reveal"><div class="step-no">STEP 06 <i></i></div><h3>生成与交付</h3><p>完成视频、字幕、动态包装、质量检查与最终成片输出。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="quality">
+      <div class="wrap quality-grid">
+        <div class="quality-copy reveal">
+          <span class="eyebrow" style="color: var(--lime)">Quality By Design</span>
+          <h2 class="display">质量不是最后检查，<br>而是全程设计。</h2>
+          <p>项目把容易返工的环节前置确认，把人物、产品、文字和交付完整性纳入同一套质量流程。</p>
+        </div>
+        <div class="quality-list">
+          <div class="quality-item reveal"><span class="check">✓</span><div><b>真实信息优先</b><span>脚本围绕客户资料和已确认卖点创作，不凭空编造产品参数。</span></div></div>
+          <div class="quality-item reveal"><span class="check">✓</span><div><b>关键素材先确认</b><span>候选图片、人物形象、产品板和故事板均在进入下一阶段前确认。</span></div></div>
+          <div class="quality-item reveal"><span class="check">✓</span><div><b>一致性持续锁定</b><span>让人物、产品、服装、道具和场景在多镜头中保持连贯。</span></div></div>
+          <div class="quality-item reveal"><span class="check">✓</span><div><b>画面文字专项检查</b><span>识别意外字幕、水印和异常文字，避免问题底片直接交付。</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="deliverables">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="eyebrow">Deliverables</span>
+          <h2 class="display">交付的不只是一条视频。</h2>
+          <p>项目同时沉淀品牌可持续复用的内容资产，让下一次创作更快、更稳、更接近品牌本身。</p>
+        </div>
+        <div class="deliverable-grid">
+          <article class="deliverable reveal"><small>01</small><h3>营销 Brief</h3><p>目标、受众、卖点、风格与渠道要求的结构化梳理。</p></article>
+          <article class="deliverable reveal"><small>02</small><h3>定稿脚本</h3><p>口播台词、段落结构、镜头动作和声音情绪设计。</p></article>
+          <article class="deliverable reveal"><small>03</small><h3>视觉资产</h3><p>数字人形象、产品板、使用细节图与故事板预览。</p></article>
+          <article class="deliverable reveal"><small>04</small><h3>营销成片</h3><p>完成字幕、动效、品牌包装和质检的横版或竖版视频。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing" id="start">
+      <div class="wrap">
+        <div class="closing-card reveal">
+          <h2 class="display">从“我有个想法”，<br>到“这就是我要的”。</h2>
+          <p>你只需要带来品牌、产品和目标。AI 营销数字员工会与你一起把需求想清楚、把画面预演清楚，再将它变成可交付的营销内容。</p>
+          <a class="button primary" href="#top">返回顶部 <span aria-hidden="true">↑</span></a>
+        </div>
+        <footer>
+          <span>AI 营销数字员工 · 项目能力介绍</span>
+          <span>从策略共创到营销视频交付</span>
+        </footer>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const scenes = {
+      broadcast: {
+        chip: "高频内容生产",
+        title: "数字人口播",
+        description: "让稳定的品牌人物持续出镜，完成普通话、粤语、知识分享、活动通知和销售讲解等内容。",
+        features: [
+          ["真人形象设计", "围绕职业、年龄、气质与品牌调性建立数字人。"],
+          ["自然音画表达", "台词、语气、表情和口型在同一条内容中协同呈现。"],
+          ["系列化复用", "同一人物可持续用于栏目、课程和日常社媒内容。"],
+          ["横竖版适配", "可面向企业展示、短视频平台和内部传播输出。"]
+        ]
+      },
+      product: {
+        chip: "卖点可视化",
+        title: "产品营销",
+        description: "把产品外观、核心卖点和真实使用动作组织成可理解、可记忆、可转化的视觉叙事。",
+        features: [
+          ["产品多角度展示", "通过正面、侧面、细节与材质视图强化产品认知。"],
+          ["真实使用关系", "清楚呈现人物如何拿取、操作和使用产品。"],
+          ["参数动态包装", "以字幕、标签和数据卡片突出重点，而不污染底片画面。"],
+          ["演示与广告兼容", "支持产品展示、操作演示、卖点短片和电商内容。"]
+        ]
+      },
+      service: {
+        chip: "复杂信息讲清楚",
+        title: "服务与内容讲解",
+        description: "将课程、服务、工厂、场地和文档资料转化为真人讲解、内容页和场景演示相结合的视频。",
+        features: [
+          ["资料自动梳理", "从 PDF、PPT、Word 和表格中提炼内容层级。"],
+          ["真人场景讲解", "让数字人进入对应空间，以更自然的方式说明服务。"],
+          ["内容页动效", "流程、对比、指标和知识结构可转化为动态内容页。"],
+          ["适合长内容", "通过章节、字幕和镜头变化维持信息节奏。"]
+        ]
+      },
+      brand: {
+        chip: "品牌感塑造",
+        title: "品牌广告",
+        description: "从品牌定位和情绪价值出发，创作兼具人物、产品、场景与电影感镜头的高质感短片。",
+        features: [
+          ["品牌语气统一", "让脚本、人物、色彩和镜头语言服务于同一品牌印象。"],
+          ["电影级故事板", "在生成前预演构图、光线、动作和叙事节奏。"],
+          ["多镜头视觉跨度", "通过远中近景、角度和构图变化增强可剪辑性。"],
+          ["品牌包装", "加入片头、片尾、Logo、标题和动态视觉系统。"]
+        ]
+      },
+      social: {
+        chip: "快速抓住注意力",
+        title: "社媒快剪",
+        description: "面向 Reels、Shorts 和主流短视频平台，快速制作节奏明确、重点突出的竖屏营销内容。",
+        features: [
+          ["开场钩子", "在前几秒直接抛出问题、反差、利益点或视觉动作。"],
+          ["竖屏优先", "围绕手机观看习惯设计人物、产品和字幕安全区。"],
+          ["快节奏表达", "通过景别变化、关键词动效和短句控制观看节奏。"],
+          ["多版本延展", "同一主题可延展不同开场、时长与行动引导版本。"]
+        ]
+      }
+    };
+
+    const tabs = document.querySelectorAll(".scene-tab");
+    const title = document.getElementById("sceneTitle");
+    const chip = document.getElementById("sceneChip");
+    const description = document.getElementById("sceneDescription");
+    const features = document.getElementById("sceneFeatures");
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        const scene = scenes[tab.dataset.scene];
+        tabs.forEach((item) => {
+          item.classList.remove("active");
+          item.setAttribute("aria-selected", "false");
+        });
+        tab.classList.add("active");
+        tab.setAttribute("aria-selected", "true");
+        chip.textContent = scene.chip;
+        title.textContent = scene.title;
+        description.textContent = scene.description;
+        features.innerHTML = scene.features.map(([heading, text]) =>
+          `<div class="scene-feature"><b>${heading}</b><span>${text}</span></div>`
+        ).join("");
+      });
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll(".reveal").forEach((element) => observer.observe(element));
+  </script>
+</body>
+</html>

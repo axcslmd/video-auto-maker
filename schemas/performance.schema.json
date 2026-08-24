@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Video Performance Feedback",
+  "description": "Post-publication metrics for delivered videos, enabling the performance-feedback loop in script co-creation.",
+  "type": "object",
+  "required": ["schema_version", "videos"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "client": {"type": "string", "description": "Client slug, e.g. 'acme'."},
+    "videos": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["run_id", "delivery_sha256", "channel", "published_at"],
+        "properties": {
+          "run_id": {"type": "string"},
+          "delivery_sha256": {"type": "string"},
+          "delivery_path": {"type": "string"},
+          "variant_id": {"type": "string", "description": "Links to variant_matrix variant if applicable."},
+          "channel": {
+            "type": "string",
+            "enum": ["douyin", "kuaishou", "wechat_video", "xiaohongshu", "bilibili", "youtube", "tiktok", "other"]
+          },
+          "published_at": {"type": "string", "format": "date-time"},
+          "metrics": {
+            "type": "object",
+            "properties": {
+              "views": {"type": "integer"},
+              "completion_rate": {"type": "number", "minimum": 0, "maximum": 1},
+              "ctr": {"type": "number", "description": "Click-through rate (0-1)."},
+              "conversions": {"type": "integer"},
+              "likes": {"type": "integer"},
+              "comments": {"type": "integer"},
+              "shares": {"type": "integer"},
+              "avg_watch_time_sec": {"type": "number"}
+            }
+          },
+          "variant_axis": {
+            "type": "object",
+            "description": "Which variant axis performed best, if this is from a matrix test.",
+            "properties": {
+              "hook_id": {"type": "string"},
+              "actor_id": {"type": "string"},
+              "cta_id": {"type": "string"}
+            }
+          },
+          "notes": {"type": "string", "description": "Free-text qualitative observations from the marketer."}
+        }
+      }
+    },
+    "learnings": {
+      "type": "array",
+      "description": "Distilled insights for the co-creation agent to reference in future sessions.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "insight": {"type": "string"},
+          "evidence_run_ids": {"type": "array", "items": {"type": "string"}},
+          "applicable_stage": {"type": "string", "enum": ["intent", "structure", "hook", "cta", "actor", "style"]}
+        }
+      }
+    }
+  }
+}

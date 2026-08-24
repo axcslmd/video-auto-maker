@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Generation Ledger Event",
+  "type": "object",
+  "required": ["schema_version", "event_id", "timestamp", "event"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "event_id": {"type": "string"},
+    "timestamp": {"type": "string"},
+    "event": {"type": "string"},
+    "unit_id": {"type": "string"},
+    "task_id": {"type": "string"},
+    "handoff_fingerprint": {"type": "string"}
+  }
+}

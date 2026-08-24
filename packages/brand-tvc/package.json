@@ -1,0 +1,52 @@
+{
+  "id": "brand-tvc",
+  "display_name": "TVC 包",
+  "sales_name": "品牌广告片模块",
+  "version": "1.0",
+  "primary_entry": "/brand-tvc",
+  "included_commands": [
+    "/brand-tvc"
+  ],
+  "shared_commands": [
+    "/video-auto-maker",
+    "/setup",
+    "/asset-prep",
+    "/brand-kit",
+    "/digital-human",
+    "/text-anim"
+  ],
+  "included_capabilities": [
+    "15-20 秒品牌广告片创意共创",
+    "品牌主张、情绪价值、视觉基调提炼",
+    "多镜头电影级分镜与故事板",
+    "产品英雄/象征隐喻/情感共鸣/反转悬念创意结构",
+    "多镜头并行生成、统一风格合同、逐 take QC/OCR/客户验收与受控重试",
+    "品牌 logo/slogan 收尾和品牌一致性检查"
+  ],
+  "excluded_capabilities": [
+    "长篇 PPT/课程/方案讲解",
+    "普通带货口播批量生产",
+    "产品实拍演示的逐步教学主交付",
+    "保证复杂 logo 在生成画面内动态稳定"
+  ],
+  "deliverables": [
+    "品牌 statement 与创意方向",
+    "TVC 脚本和逐镜分镜",
+    "电影级故事板",
+    "分镜视频素材",
+    "拼接成片和品牌收尾",
+    "QC 与交付记录"
+  ],
+  "handoff_rules": [
+    {
+      "condition": "客户只需要一个数字人讲卖点或服务",
+      "target_package": "oral-broadcast",
+      "message": "这属于口播包，不需要 TVC 级制作规格。"
+    },
+    {
+      "condition": "客户核心素材是 PPT/方案/课程，需要讲清复杂内容",
+      "target_package": "explainer",
+      "message": "这属于讲解包，重点是内容结构和双分支融合。"
+    }
+  ]
+}

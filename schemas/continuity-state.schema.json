@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Accepted Take Continuity State",
+  "type": "object",
+  "required": ["schema_version", "project_id", "run_id", "policy", "scene_anchors", "takes", "scene_heads"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "project_id": {"type": "string"},
+    "run_id": {"type": "string"},
+    "policy": {"type": "object"},
+    "scene_anchors": {"type": "object"},
+    "takes": {"type": "object"},
+    "scene_heads": {"type": "object"},
+    "events": {"type": "array"}
+  }
+}

@@ -1,0 +1,4 @@
+{
+  "$schema": "https://app.kilo.ai/config.json",
+  "instructions": ["AGENTS.md", "AGENT_ENTRY_PROTOCOL.md"]
+}

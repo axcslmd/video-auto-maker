@@ -1,0 +1,52 @@
+{
+  "id": "oral-broadcast",
+  "display_name": "口播包",
+  "sales_name": "数字人口播模块",
+  "version": "1.0",
+  "primary_entry": "/oral-broadcast",
+  "included_commands": [
+    "/oral-broadcast"
+  ],
+  "shared_commands": [
+    "/video-auto-maker",
+    "/setup",
+    "/asset-prep",
+    "/brand-kit",
+    "/digital-human",
+    "/text-anim"
+  ],
+  "included_capabilities": [
+    "数字人单人对镜口播",
+    "普通话/粤语口播脚本共创",
+    "带货、种草、服务介绍类短口播",
+    "数字人形象与音色确认",
+    "人物板、故事板和出片确认闸门",
+    "横版口播增强：字幕、章节、动态卡片、PIP"
+  ],
+  "excluded_capabilities": [
+    "复杂 PPT/PDF/Word 内容重导演",
+    "课程/方案型多内容页讲解",
+    "品牌 TVC 级创意大片和多镜头广告叙事",
+    "双人访谈和实景服务介绍作为主交付"
+  ],
+  "deliverables": [
+    "确认版口播脚本和 tagline",
+    "逐段口播分镜",
+    "数字人人物板和故事板预览",
+    "口播底片",
+    "可选字幕/动效增强成片",
+    "QC 与交付记录"
+  ],
+  "handoff_rules": [
+    {
+      "condition": "客户要求讲 PPT、课程、方案或多内容页知识讲解",
+      "target_package": "explainer",
+      "message": "这已经超出口播包，建议升级讲解包。"
+    },
+    {
+      "condition": "客户要求电影感品牌形象片、新品发布大片或强创意 TVC",
+      "target_package": "brand-tvc",
+      "message": "这属于 TVC 包，建议按品牌广告片模块报价。"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Multi-ratio layout contract",
+  "type": "object",
+  "required": ["schema_version", "type", "ratios", "shots", "unresolved", "contract_sha256"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "type": {"const": "layout_contract"},
+    "contract_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "ratios": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"enum": ["16:9", "9:16", "1:1", "4:3", "3:4"]}},
+    "unresolved": {"type": "array", "items": {"type": "string"}},
+    "shots": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["shot_id", "component_family", "layouts"],
+        "properties": {
+          "shot_id": {"type": "string", "minLength": 1},
+          "component_family": {"type": "string", "minLength": 1},
+          "layouts": {
+            "type": "object",
+            "minProperties": 1,
+            "additionalProperties": {
+              "type": "object",
+              "required": ["dimensions", "layout_family", "regions", "content_capacity", "asset_variants", "safe_zone"],
+              "properties": {
+                "dimensions": {"type": "array", "minItems": 2, "maxItems": 2, "items": {"type": "integer", "minimum": 1}},
+                "layout_family": {"type": "string", "minLength": 1},
+                "regions": {"type": "object", "minProperties": 1},
+                "content_capacity": {"type": "object"},
+                "asset_variants": {"type": "array"},
+                "safe_zone": {"type": "object"}
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Per-shot visual intent contract",
+  "type": "object",
+  "required": ["schema_version", "type", "shots", "contract_sha256"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "type": {"const": "visual_intent_contract"},
+    "contract_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "shots": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["shot_id", "semantic_kind", "component_family", "communication_goal", "single_visual_thesis", "primary_subject", "secondary_subjects", "attention_order", "selection_source", "unresolved"],
+        "properties": {
+          "shot_id": {"type": "string", "minLength": 1},
+          "semantic_kind": {"enum": ["narrative", "quantitative_proof", "comparison", "process", "timeline", "documentary_proof", "product_showcase", "physical_demonstration", "brand_resolve", "cta"]},
+          "component_family": {"enum": ["hero", "metric", "comparison", "process", "timeline", "proof", "product", "brand", "cta"]},
+          "communication_goal": {"type": "string", "minLength": 1},
+          "single_visual_thesis": {"type": "string", "minLength": 1},
+          "primary_subject": {"type": "string", "minLength": 1},
+          "secondary_subjects": {"type": "array", "maxItems": 2, "items": {"type": "string", "minLength": 1}},
+          "attention_order": {"type": "array", "minItems": 1, "maxItems": 3, "items": {"type": "string", "minLength": 1}},
+          "selection_source": {"enum": ["authored_visual_intent", "structured_semantics", "data_shape", "safe_default"]},
+          "unresolved": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    }
+  }
+}

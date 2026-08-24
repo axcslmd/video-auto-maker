@@ -1,0 +1,62 @@
+{
+  "schema": 4,
+  "policy": "bundled_same_platform_first_then_online_bootstrap",
+  "agent_runtime": {
+    "entry": "scripts/workflow_api.py next",
+    "router_contract": "2026-08-18.5",
+    "host_identity": "diagnostic_only_with_unknown_fallback",
+    "unknown_model_policy": "atomic_patch",
+    "creative_ir_compiler": "scripts/storyboard_plan_compiler.py",
+    "structured_output_router": "scripts/text_provider.py",
+    "mcp_stdio_entry": "scripts/workflow_mcp_server.py",
+    "mcp_protocol_versions": ["2025-11-25", "2025-06-18"],
+    "write_idempotency": "required request_id with persisted receipt",
+    "runtime_audit": "scripts/runtime_audit.py (secret-free OTel-shaped JSONL)",
+    "release_audit": "scripts/release_audit.py",
+    "archive_verifier": "scripts/package_delivery.py --verify-archive",
+    "business_stage_flow_changed": true
+  },
+  "project_layout": {
+    "contract": "agent-project-layout.v1",
+    "validator": "scripts/package_delivery.py validate_delivery_shape",
+    "stable_cli_root": "scripts/",
+    "host_adapters": [".codex/", ".kilo/", ".workbuddy/", "adapters/"],
+    "contracts": ["schemas/", "policies/", "evals/", "tests/"],
+    "documentation": "docs/",
+    "generated_state": "output/ (never packaged)",
+    "business_stage_flow_changed": true
+  },
+  "offline_package": {
+    "installer": "scripts/offline_setup.py",
+    "artifact_manifest": "offline-assets/artifact-manifest.json",
+    "requires_matching_platform": true,
+    "requires_matching_python_abi": true,
+    "network_required": false,
+    "fallback": "online bootstrap when platform, ABI, wheel tag, or digest verification fails"
+  },
+  "python": {
+    "lock": "requirements.lock.txt",
+    "bundled_wheels": true,
+    "bundled_abi": "cp39",
+    "integrity": "SHA-256 tree plus per-wheel tag validation before pip"
+  },
+  "node": {
+    "lock": "remotion_engine/package-lock.json",
+    "bundled_node_modules": "remotion_engine/node_modules",
+    "bundled_platform": "darwin-arm64",
+    "portable_on_windows": false,
+    "offline_runtime": "offline-assets/node-runtime"
+  },
+  "browsers": {
+    "remotion_chrome": "download_per_os_and_architecture",
+    "bundled": true,
+    "bundled_platform": "darwin-arm64",
+    "integrity": "SHA-256 verified archive and safe ZIP extraction",
+    "note": "Other platforms download their matching Chrome artifact during online bootstrap."
+  },
+  "platforms": {
+    "macos": "use bundled node_modules only when architecture matches; otherwise npm ci",
+    "windows": "ignore bundled macOS node_modules and run npm ci",
+    "linux": "ignore bundled macOS node_modules and run npm ci"
+  }
+}

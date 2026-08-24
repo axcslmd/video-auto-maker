@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "source-facts.schema.json",
+  "title": "Immutable customer facts with provenance",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "client", "facts", "forbidden_inferences"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "client": {"type": "string", "pattern": "^[a-z0-9][a-z0-9_-]*$", "maxLength": 48},
+    "run_id": {"type": "string", "minLength": 1, "maxLength": 64},
+    "facts": {
+      "type": "array",
+      "maxItems": 300,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "value", "source"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^[a-z][a-z0-9_.-]*$", "maxLength": 128},
+          "value": {"type": ["string", "number", "boolean"], "maxLength": 2000},
+          "source": {"type": "string", "minLength": 1, "maxLength": 4096},
+          "locator": {"type": "string", "maxLength": 500},
+          "customer_confirmed": {"type": "boolean"}
+        }
+      }
+    },
+    "forbidden_inferences": {"type": "array", "maxItems": 100, "items": {"type": "string", "minLength": 1, "maxLength": 500}}
+  }
+}

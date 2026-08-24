@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "stage-packet.schema.json",
+  "title": "Compact model-neutral workflow stage packet",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "protocol_version", "stage", "next_action", "chain_profile", "host", "missing_host_capabilities", "interaction_contract", "entry_functions", "transaction", "confirm_function", "artifacts", "guidance_index"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "protocol_version": {"type": "string", "minLength": 1},
+    "stage": {"type": "string", "minLength": 1},
+    "next_action": {"type": "string", "minLength": 1},
+    "chain_profile": {"type": "object"},
+    "host": {"type": "object"},
+    "missing_host_capabilities": {"type": "array", "items": {"type": "string"}},
+    "interaction_contract": {"type": "object"},
+    "entry_functions": {"type": "array", "items": {"type": "object"}},
+    "transaction": {
+      "type": "object",
+      "required": ["mode", "begin", "generate", "finish", "invariant"],
+      "properties": {
+        "mode": {"enum": ["external_three_phase", "specialized_atomic", "terminal_commit", "non_generating"]},
+        "begin": {"type": ["object", "null"]},
+        "generate": {"type": "array", "items": {"type": "object"}},
+        "finish": {"type": ["object", "null"]},
+        "invariant": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    },
+    "confirm_function": {"type": ["object", "null"]},
+    "artifacts": {"type": "array", "items": {"type": "object"}},
+    "guidance_index": {"type": "array", "items": {"type": "string"}}
+  }
+}

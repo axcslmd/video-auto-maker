@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://shotcraft.local/schemas/visible-layer-contract.schema.json",
+  "title": "Visible Layer Contract",
+  "type": "object",
+  "required": ["schema_version", "ok", "policy", "errors", "geometry"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "ok": {"type": "boolean"},
+    "policy": {
+      "type": "object",
+      "required": ["remotion", "hyperframes", "presenter"],
+      "additionalProperties": {"type": "string"}
+    },
+    "errors": {"type": "array", "items": {"type": "object"}},
+    "geometry": {"type": "array", "items": {"type": "object"}}
+  },
+  "additionalProperties": true
+}

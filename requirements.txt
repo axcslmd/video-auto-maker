@@ -1,0 +1,15 @@
+# 客户品牌 数字员工 — 运行依赖（全部 pip，无需系统级安装/管理员权限）
+# 生产环境请使用 requirements.lock.txt 做可重复安装；本文件保留范围约束供自举使用。
+python-pptx>=0.6.21     # 解析 .pptx
+python-docx>=0.8.11     # 解析 .docx / 生成 .docx
+pypdf>=6.0.0,<7         # 解析 .pdf（BSD-3-Clause，避免 PyMuPDF AGPL 传播约束）
+openpyxl>=3.0.0         # 解析 .xlsx
+# ffmpeg/ffprobe 是外部运行时工具，不由 pip 包自动下载，也不进入社区源码发行包。
+# 请由用户单独安装后放入 PATH，或设置 BASICROUTER_FFMPEG_DIR。
+# macOS Vision OCR 兜底检测（出片后自动抽帧 OCR，防字幕残留漏到客户）
+# 仅 macOS 客户端有效；非 macOS 时 ocr_check.py 静默跳过，不影响出片
+pyobjc-framework-Vision>=10.0   # macOS Vision OCR 框架绑定
+pyobjc-framework-Quartz>=10.0   # Vision 依赖的 Quartz/CoreImage 绑定
+# 注：数字人抠像/换背景一律走外部模型能力（BasicRouter img2img/参考图），本地不装 rembg/onnxruntime，保持轻交付
+# 可选增强：jsonschema>=4.0 — 安装后 schema_validate.py 用权威实现做契约校验；
+# 未安装时使用内置 mini 校验器（覆盖本项目 schema 全部关键字），保持零新增依赖也能 fail-closed

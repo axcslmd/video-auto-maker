@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Creative Variant Matrix",
+  "description": "Defines an A/B testing matrix: hooks x actors x CTAs, expanded into a cartesian product of video variants.",
+  "type": "object",
+  "required": ["schema_version", "base_segments", "variant_axes"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "base_segments": {
+      "type": "array",
+      "description": "Shared middle segments reused across all variants (body of the video).",
+      "items": {
+        "type": "object",
+        "required": ["id", "text", "video_type"],
+        "properties": {
+          "id": {"type": "string"},
+          "text": {"type": "string"},
+          "video_type": {"type": "integer", "enum": [1, 2, 3, 4, 5]},
+          "urls": {"type": "array", "items": {"type": "string"}},
+          "duration": {"type": "number"},
+          "ratio": {"type": "string", "enum": ["9:16", "16:9", "1:1", "4:3", "3:4"]}
+        }
+      }
+    },
+    "variant_axes": {
+      "type": "object",
+      "required": ["hooks", "ctas"],
+      "properties": {
+        "hooks": {
+          "type": "array",
+          "description": "Opening hook variants — replaces first segment text.",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["id", "text"],
+            "properties": {
+              "id": {"type": "string"},
+              "text": {"type": "string"},
+              "duration": {"type": "number"},
+              "video_type": {"type": "integer", "enum": [1, 2, 3, 4, 5]},
+              "urls": {"type": "array", "items": {"type": "string"}}
+            }
+          }
+        },
+        "actors": {
+          "type": "array",
+          "description": "Digital human actor variants — each uses a different cast_board reference.",
+          "items": {
+            "type": "object",
+            "required": ["id", "cast_board_path"],
+            "properties": {
+              "id": {"type": "string"},
+              "cast_board_path": {"type": "string"},
+              "voice_type": {"type": "string"}
+            }
+          }
+        },
+        "ctas": {
+          "type": "array",
+          "description": "Closing CTA variants — replaces last segment text.",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["id", "text"],
+            "properties": {
+              "id": {"type": "string"},
+              "text": {"type": "string"},
+              "duration": {"type": "number"},
+              "video_type": {"type": "integer", "enum": [1, 2, 3, 4, 5]},
+              "urls": {"type": "array", "items": {"type": "string"}}
+            }
+          }
+        }
+      }
+    },
+    "ratio": {"type": "string", "enum": ["9:16", "16:9", "1:1", "4:3", "3:4"]},
+    "model": {"type": "string"},
+    "budget_limit_usd": {"type": "number", "description": "Cost ceiling; abort if estimated total exceeds this."}
+  }
+}

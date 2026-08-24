@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Marketing Video Take Review",
+  "type": "object",
+  "required": ["schema_version", "review_id", "segment_id", "take_id", "artifact", "issues", "decision"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "review_id": {"type": "string"},
+    "segment_id": {"type": "string"},
+    "take_id": {"type": "string"},
+    "artifact": {"type": "object", "required": ["take_fingerprint"]},
+    "issues": {"type": "object", "required": ["immutable_errors", "transient_warnings"]},
+    "decision": {"type": "object", "required": ["verdict"], "properties": {"verdict": {"enum": ["pending", "accepted", "rejected"]}}}
+  }
+}

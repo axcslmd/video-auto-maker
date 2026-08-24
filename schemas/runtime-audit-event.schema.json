@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "runtime-audit-event.schema.json",
+  "title": "Secret-free workflow runtime audit event",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "timestamp", "observed_timestamp", "trace_id", "severity_text", "severity_number", "event_name", "body", "resource", "attributes"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "timestamp": {"type": "string", "minLength": 20},
+    "observed_timestamp": {"type": "string", "minLength": 20},
+    "trace_id": {"type": "string", "pattern": "^[a-f0-9]{32}$"},
+    "severity_text": {"enum": ["INFO", "WARN", "ERROR"]},
+    "severity_number": {"enum": [9, 13, 17]},
+    "event_name": {"type": "string", "pattern": "^[a-z][a-z0-9_.]{2,95}$"},
+    "body": {"type": "string", "minLength": 1, "maxLength": 256},
+    "resource": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["service.name", "service.version"],
+      "properties": {
+        "service.name": {"const": "basicrouter-video-workflow"},
+        "service.version": {"type": "string", "minLength": 1}
+      }
+    },
+    "attributes": {"type": "object", "maxProperties": 24}
+  }
+}

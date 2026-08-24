@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "script-beats.schema.json",
+  "title": "Progressive script beats",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "client", "beats"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "client": {"type": "string", "pattern": "^[a-z0-9][a-z0-9_-]*$", "maxLength": 48},
+    "run_id": {"type": "string", "minLength": 1, "maxLength": 64},
+    "beats": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 12,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["beat_id", "purpose", "message", "talk", "duration", "fact_refs"],
+        "properties": {
+          "beat_id": {"type": "string", "pattern": "^beat_[0-9]{2}$"},
+          "purpose": {"enum": ["hook", "problem", "proof", "benefit", "demonstration", "transition", "payoff", "cta"]},
+          "message": {"type": "string", "minLength": 1, "maxLength": 1000},
+          "talk": {"type": "string", "maxLength": 2000},
+          "duration": {"type": "number", "minimum": 1, "maximum": 60},
+          "fact_refs": {"type": "array", "uniqueItems": true, "maxItems": 30, "items": {"type": "string", "pattern": "^[a-z][a-z0-9_.-]*$"}},
+          "motion_elements": {"type": "array", "maxItems": 20, "items": {"type": "string", "minLength": 1, "maxLength": 500}}
+        }
+      }
+    }
+  }
+}

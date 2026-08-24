@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "artifact-registry.schema.json",
+  "title": "Executable artifact registry snapshot",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "client", "run_id", "nodes", "edges", "milestones", "ready_actions"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "client": {"type": "string", "minLength": 1},
+    "run_id": {"type": "string", "minLength": 1},
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["artifact_id", "artifact_type", "stage", "milestone", "state", "dependencies", "outputs", "approval_required", "cost_class"],
+        "properties": {
+          "artifact_id": {"type": "string", "pattern": "^artifact:"},
+          "artifact_type": {"type": "string", "minLength": 1},
+          "stage": {"type": "string", "minLength": 1},
+          "milestone": {"enum": ["plan", "previs", "generation_review", "finish_delivery"]},
+          "state": {"enum": ["planned", "blocked", "ready", "running", "produced", "awaiting_review", "approved", "rejected", "failed", "stale", "skipped"]},
+          "dependencies": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^artifact:"}},
+          "outputs": {"type": "array", "items": {"type": "object"}},
+          "approval_required": {"type": "boolean"},
+          "cost_class": {"enum": ["local_deterministic", "paid_image", "paid_video"]}
+        }
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["from", "to"],
+        "properties": {
+          "from": {"type": "string", "pattern": "^artifact:"},
+          "to": {"type": "string", "pattern": "^artifact:"}
+        }
+      }
+    },
+    "milestones": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "title", "state", "completed_units", "total_units"],
+        "properties": {
+          "id": {"enum": ["plan", "previs", "generation_review", "finish_delivery"]},
+          "title": {"type": "string", "minLength": 1},
+          "state": {"enum": ["completed", "failed", "stale", "in_progress", "ready", "blocked"]},
+          "completed_units": {"type": "integer", "minimum": 0},
+          "total_units": {"type": "integer", "minimum": 0}
+        }
+      }
+    },
+    "ready_actions": {"type": "array", "items": {"type": "object"}}
+  }
+}
