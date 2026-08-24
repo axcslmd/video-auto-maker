@@ -1,0 +1,62 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  python:
+    name: Python contracts and tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - name: Install Python dependencies
+        run: python -m pip install --disable-pip-version-check -r requirements.lock.txt pytest
+      - name: Compile Python sources
+        run: python -m compileall -q scripts
+      - name: Validate license policy
+        run: python scripts/license_compliance.py check
+      - name: Validate workflow contracts
+        run: |
+          python scripts/workflow_router.py validate
+          python scripts/architecture_audit.py validate
+          python scripts/skill_contract.py validate
+          python scripts/module_packages.py validate
+          python scripts/llm_workflow_eval.py validate-fixtures --cases evals/business_cases.json
+      - name: Run tests
+        run: python -m pytest -q
+      - name: Build and verify source-only package
+        run: python scripts/package_delivery.py --out-dir "${RUNNER_TEMP}/community-source"
+
+  remotion:
+    name: Remotion typecheck
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: remotion_engine
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: remotion_engine/package-lock.json
+      - name: Install locked npm dependencies
+        run: npm ci
+      - name: Typecheck
+        run: npm run typecheck
