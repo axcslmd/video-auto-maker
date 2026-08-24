@@ -1,5 +1,7 @@
 # AI 营销视频工作室
 
+[![CI](https://github.com/axcslmd/video-auto-maker/actions/workflows/ci.yml/badge.svg)](https://github.com/axcslmd/video-auto-maker/actions/workflows/ci.yml)
+
 > **你出创意，我出成片。** 从一句话需求到可发布的营销视频，全程引导式完成。
 
 ## 文档导航
@@ -10,6 +12,8 @@
 | **我是交付人员** | [交付清单](docs/operations/DELIVERY_CHECKLIST.md) — 交付检查清单 |
 | **我是技术负责人** | [项目概览](docs/architecture/PROJECT_OVERVIEW.md) — 项目概览 |
 | **我是开发者** | 继续往下读本文档 |
+
+安全漏洞请通过 GitHub 私密报告入口或按 [SECURITY.md](SECURITY.md) 联系项目作者；贡献代码前请阅读 [CONTRIBUTING.md](CONTRIBUTING.md) 和 [CLA.md](CLA.md)。
 
 ---
 

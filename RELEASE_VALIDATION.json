@@ -2,8 +2,8 @@
   "schema_version": 1,
   "kind": "release_validation",
   "status": "passed",
-  "generated_at": "2026-08-24T08:07:24+00:00",
-  "project_fingerprint": "d1569b0c432f70186fdfc42b7608e1af4d0a5d7c5168c441007b73c0fe494efe",
+  "generated_at": "2026-08-24T08:31:21+00:00",
+  "project_fingerprint": "6479707a5b21222012270caec487acd50453680b9d0a3994748633adc224ea34",
   "python": "CPython 3.9.6",
   "commands": [
     {
@@ -18,7 +18,7 @@
       "exit_code": 0,
       "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "duration_ms": 53
+      "duration_ms": 95
     },
     {
       "name": "workflow_contract",
@@ -30,7 +30,7 @@
       "exit_code": 0,
       "stdout_sha256": "7cb11e7e7d93153bbd7b22fd18bfb95afb73a46c3c1a60c3c32fc88b97e908e7",
       "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "duration_ms": 335
+      "duration_ms": 345
     },
     {
       "name": "architecture_contract",
@@ -42,7 +42,7 @@
       "exit_code": 0,
       "stdout_sha256": "8ee2a460b87d202bf155119b02e0c45d67e5137d669def764b667c6d7d047537",
       "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "duration_ms": 1712
+      "duration_ms": 1747
     },
     {
       "name": "skill_contract",
@@ -54,7 +54,7 @@
       "exit_code": 0,
       "stdout_sha256": "075240dc5e435e15e96439730ab292204ba64be253de34013238e68119fd335c",
       "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "duration_ms": 84
+      "duration_ms": 93
     },
     {
       "name": "module_packages",
@@ -66,7 +66,7 @@
       "exit_code": 0,
       "stdout_sha256": "9bf5d597ef1cce6c355e1727229cc29f9433e59b89ec5ce3fdd64387b7217581",
       "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "duration_ms": 27
+      "duration_ms": 29
     },
     {
       "name": "llm_business_evals",
@@ -80,7 +80,7 @@
       "exit_code": 0,
       "stdout_sha256": "aa4ea7635289ee705c511777d4b6234561b4ad91daf1702a8c7e7cedd80e2d73",
       "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "duration_ms": 67
+      "duration_ms": 70
     },
     {
       "name": "offline_canary",
@@ -90,9 +90,9 @@
         "--dry-run"
       ],
       "exit_code": 0,
-      "stdout_sha256": "315a966ea9f9ab84cab7c75e682edde8f6aa04768d7108d0b3ac0a8598399384",
+      "stdout_sha256": "9ebc71e77d14b47f6d5b4ab1f076e35825c76f462b1b9ee6e7c89a6abff9dc24",
       "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "duration_ms": 34
+      "duration_ms": 35
     },
     {
       "name": "offline_runtime",
@@ -104,7 +104,7 @@
       "exit_code": 0,
       "stdout_sha256": "9e96c0ddc7d969576067391e4a1dc2f3f37f792c80ca314b7795aa78b0ae5888",
       "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "duration_ms": 3140
+      "duration_ms": 3178
     },
     {
       "name": "tests",
@@ -115,9 +115,9 @@
         "-q"
       ],
       "exit_code": 0,
-      "stdout_sha256": "6d4a28cc8d2ffc020974e95ffd3d79daa6e4c423c8235595b1128b7c5021fccc",
+      "stdout_sha256": "4459c58592112ce05172ac3d6db67bd76b94cb36b4b0633e032bc811d223d09a",
       "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "duration_ms": 7499
+      "duration_ms": 7445
     }
   ],
   "tests_passed": 334,

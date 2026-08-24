@@ -79,7 +79,8 @@ REQUIRED_ROOT_DIRS = {
     "references", "remotion_engine", "schemas", "scripts", "skills", "tests",
 }
 REQUIRED_ROOT_FILES = {
-    ".gitignore", "AGENTS.md", "AGENT_ENTRY_PROTOCOL.md", "README.md",
+    ".gitattributes", ".gitignore", "AGENTS.md", "AGENT_ENTRY_PROTOCOL.md",
+    "README.md", "SECURITY.md",
     "LICENSE", "NOTICE", "COMMERCIAL_LICENSE.md", "TRADEMARKS.md", "CLA.md",
     "CONTRIBUTING.md", "THIRD_PARTY_NOTICES.md",
     "START_HERE_AGENT.md", "START_HERE_AGENT.py", "deploy.ps1", "deploy.sh",
