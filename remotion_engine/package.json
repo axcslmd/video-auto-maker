@@ -11,7 +11,7 @@
   "dependencies": {
     "@react-three/fiber": "9.3.0",
     "@remotion/cli": "4.0.509",
-    "@remotion/lottie": "4.0.509",
+    "@remotion/lottie": "4.0.514",
     "@remotion/motion-blur": "4.0.509",
     "@remotion/rive": "4.0.509",
     "@remotion/three": "4.0.509",
