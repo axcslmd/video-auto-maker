@@ -13,7 +13,7 @@
     "@remotion/cli": "4.0.509",
     "@remotion/lottie": "4.0.509",
     "@remotion/motion-blur": "4.0.509",
-    "@remotion/rive": "4.0.509",
+    "@remotion/rive": "4.0.514",
     "@remotion/three": "4.0.509",
     "@remotion/transitions": "4.0.509",
     "lottie-web": "5.13.0",
