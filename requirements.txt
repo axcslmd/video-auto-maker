@@ -2,7 +2,7 @@
 # 生产环境请使用 requirements.lock.txt 做可重复安装；本文件保留范围约束供自举使用。
 python-pptx>=0.6.21     # 解析 .pptx
 python-docx>=0.8.11     # 解析 .docx / 生成 .docx
-pypdf>=6.0.0,<7         # 解析 .pdf（BSD-3-Clause，避免 PyMuPDF AGPL 传播约束）
+pypdf>=6.20.0,<7         # 解析 .pdf（BSD-3-Clause，避免 PyMuPDF AGPL 传播约束）
 openpyxl>=3.0.0         # 解析 .xlsx
 # ffmpeg/ffprobe 是外部运行时工具，不由 pip 包自动下载，也不进入社区源码发行包。
 # 请由用户单独安装后放入 PATH，或设置 BASICROUTER_FFMPEG_DIR。
